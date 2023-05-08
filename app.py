@@ -124,6 +124,7 @@ def main():
     st.set_page_config(page_title="Project Manager with LLM")
     st.image("img/logo.png")
     st.title("Project Manager with LLM")
+
     st.write("Ask a question, and get answers from Subject Matter Experts:")
     user_question = st.text_area("Enter your question:")
 
