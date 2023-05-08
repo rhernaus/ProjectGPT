@@ -146,7 +146,7 @@ def main():
             with st.spinner("Resolving the best answer..."):
                 best_answer = resolve_best_answer(user_question, answers)
 
-            st.text_area("Best Answer", value=best_answer, height=50, disabled=True)
+            st.text_area("Best Answer", value=best_answer, height=250, disabled=True)
 
     else:
         st.warning("Please enter a question.")
