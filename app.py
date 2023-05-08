@@ -42,7 +42,7 @@ SUBJECT_MATTER_EXPERTS = [
 
 def create_chat_completion(system_prompt: str, user_prompt: str) -> openai.ChatCompletion:
     """
-    Create a chat completion using OpenAI's GPT-4.
+    Create a chat completion using OpenAI's API.
 
     Args:
         system_prompt (str): The system role prompt.
@@ -119,11 +119,11 @@ def resolve_best_answer(question, answers):
 
 def main():
     """
-    Main function for the Project Manager with GPT-4 Streamlit app.
+    Main function for the Project Manager with LLM Streamlit app.
     """
-    st.set_page_config(page_title="Project Manager with GPT-4")
+    st.set_page_config(page_title="Project Manager with LLM")
     st.image("img/logo.png")
-    st.title("Project Manager with GPT-4")
+    st.title("Project Manager with LLM")
     st.write("Ask a question, and get answers from Subject Matter Experts:")
     user_question = st.text_area("Enter your question:")
 
