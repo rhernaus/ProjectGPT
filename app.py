@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 from typing import List, Dict
 
 load_dotenv(verbose=True, override=True)
-openai.api_key = os.getenv("OPENAI_API_KEY")
 MODEL = os.getenv("MODEL", "gpt-4")
 
 SUBJECT_MATTER_EXPERTS = [
@@ -39,6 +38,14 @@ SUBJECT_MATTER_EXPERTS = [
     "Ecologist", "Environmental Scientist", "Conservation Expert",
 ]
 
+def get_api_key() -> str:
+    """
+    Get the OpenAI API key from the .env file or return None if not found.
+
+    Returns:
+        str: The OpenAI API key or None.
+    """
+    return os.getenv("OPENAI_API_KEY")
 
 def create_chat_completion(system_prompt: str, user_prompt: str) -> openai.ChatCompletion:
     """
@@ -124,6 +131,17 @@ def main():
     st.set_page_config(page_title="Project Manager with LLM")
     st.image("img/logo.png")
     st.title("Project Manager with LLM")
+
+    api_key = get_api_key()
+
+    if api_key is None:
+        api_key = st.text_input("Enter your OpenAI API Key:", type="password")
+
+        if not api_key:
+            st.warning("Please enter your OpenAI API Key.")
+            return
+
+    openai.api_key = api_key
 
     st.write("Ask a question, and get answers from Subject Matter Experts:")
     user_question = st.text_area("Enter your question:")
