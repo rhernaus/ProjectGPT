@@ -40,7 +40,7 @@ This application uses OpenAI GPT models, state-of-the-art language models by Ope
    pip install -r requirements.txt
    ```
 
-3. Create a `.env` file in the project root directory and add your OpenAI API key:
+3. Optionally, create a `.env` file in the project root directory and add your OpenAI API key:
 
    ```
    OPENAI_API_KEY=your_api_key_here

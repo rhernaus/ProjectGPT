@@ -5,8 +5,9 @@ from dotenv import load_dotenv
 from typing import List, Dict
 
 load_dotenv(verbose=True, override=True)
-MODEL = os.getenv("MODEL", "gpt-4")
 
+
+MODEL = "gpt-4"
 SUBJECT_MATTER_EXPERTS = [
     # Natural Sciences
     "Physicist", "Chemist", "Biologist", "Astronomer", "Earth Scientist",
@@ -58,6 +59,7 @@ def create_chat_completion(system_prompt: str, user_prompt: str) -> openai.ChatC
     Returns:
         openai.ChatCompletion: A ChatCompletion object containing the response.
     """
+    global MODEL
     return openai.ChatCompletion.create(
         model=MODEL,
         messages=[
@@ -69,7 +71,6 @@ def create_chat_completion(system_prompt: str, user_prompt: str) -> openai.ChatC
         stop=None,
         temperature=0.7,
     )
-
 
 def classify_question(question: str) -> List[str]:
     """
@@ -128,6 +129,7 @@ def main():
     """
     Main function for the Project Manager with LLM Streamlit app.
     """
+    global MODEL
     st.set_page_config(page_title="Project Manager with LLM")
     st.image("img/logo.png")
     st.title("Project Manager with LLM")
@@ -142,6 +144,9 @@ def main():
             return
 
     openai.api_key = api_key
+
+    # Add a dropdown menu for the user to select the model
+    MODEL = st.selectbox("Select the model to use:", options=["gpt-4", "gpt-3.5-turbo"], index=0)
 
     st.write("Ask a question, and get answers from Subject Matter Experts:")
     user_question = st.text_area("Enter your question:")
