@@ -1,6 +1,6 @@
 # Project Manager with multiple Subject Matter Experts (SMEs)
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/rhernaus/projectgpt/app.py)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://rhernaus-projectgpt-app-s5m1hd.streamlit.app/)
 
 This application uses OpenAI GPT models, state-of-the-art language models by OpenAI, to simulate a project manager who can provide expert answers to your questions across various fields.
 
