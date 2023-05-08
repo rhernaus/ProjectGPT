@@ -92,45 +92,61 @@ smes = [
     "Conservation Expert",
 ]
 
-# Function to generate prompt for SME
-def generate_prompt(question, sme):
-    return f"As a {sme}, how would you answer this question: {question}? Let's work this out in a step by step way to be sure we have the right answer."
 
 def classify_question(question):
-    prompt = f"Classify the following question and select the top 3 most relevant Subject Matter Experts from the list: {question}\n\n{', '.join(smes)}\n\nTop 3 SMEs:"
+    prompt = f"Classify the following question and select the top 3 most relevant Subject Matter Experts from the list: {question}\n\n{', '.join(smes)}\n\nOnly answer with relevant Subject Matter Experts. No explanation is allowed.\n\nTop 3 SMEs:"
     response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4",
         messages=[
-            {"role": "system", "content": ""},
+            {"role": "system", "content": "You are a Project Manager."},
             {"role": "user", "content": prompt},
         ],
         max_tokens=1000,
         n=1,
         stop=None,
-        temperature=0.5,
+        temperature=0.7,
     )
     selected_smes = [sme.strip() for sme in response.choices[0].message["content"].strip().split(',')]
     return selected_smes[:3]  # Return the top 3 SMEs
 
-# Function to consult SMEs using GPT-3
+
+
 def consult_smes(question, selected_smes):
     responses = []
     for sme in selected_smes:
-        prompt = generate_prompt(question, sme)
+        prompt = f"How would you answer this question: {question}? Let's work this out in a step by step way to be sure we have the right answer."
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4",
             messages=[
-                {"role": "system", "content": ""},
+                {"role": "system", "content": f"You are a {sme}."},
                 {"role": "user", "content": prompt},
             ],
             max_tokens=1000,
             n=1,
             stop=None,
-            temperature=0.5,
+            temperature=0.7,
         )
         responses.append(response.choices[0].message["content"].strip())
     return responses
 
+def resolve_best_answer(question, answers):
+    prompt = f"Given the question '{question}' and the following answers from various Subject Matter Experts, choose the best answer:\n\n"
+    for i, (sme, answer) in enumerate(answers.items()):
+        prompt += f"{i + 1}. {sme}: {answer}\n"
+    prompt += f"\nPrint the Subject Matter Expert and answer in full:"
+
+    response = openai.ChatCompletion.create(
+        model="gpt-4",
+            messages=[
+                {"role": "system", "content": "You are a resolver tasked with finding which of the answer options the Subject Matter Experts have provided is the best answer."},
+                {"role": "user", "content": prompt},
+            ],
+        max_tokens=1000,
+        n=1,
+        stop=None,
+        temperature=0.7,
+    )
+    return [response.choices[0].message["content"].strip()]
 
 def project_manager(question):
     selected_smes = classify_question(question)
@@ -139,7 +155,7 @@ def project_manager(question):
 
 
 def main():
-    st.title("Project Manager with GPT-3")
+    st.title("Project Manager with GPT-4")
     st.write("Ask a question, and get answers from Subject Matter Experts:")
 
     user_question = st.text_area("Enter your question:")
@@ -148,8 +164,16 @@ def main():
         if user_question:
             with st.spinner("Getting answers from SMEs..."):
                 answers = project_manager(user_question)
+
+            st.write("#Responses from SMEs:")
             for sme, answer in answers.items():
-                st.write(f"{sme}: {answer}")
+                st.write(f"##{sme}:\n{answer}")
+
+            with st.spinner("Resolving the best answer..."):
+                best_answer = resolve_best_answer(user_question, answers)
+
+            st.write(f"#The best answer is:\n{best_answer}")
+
         else:
             st.warning("Please enter a question.")
 
