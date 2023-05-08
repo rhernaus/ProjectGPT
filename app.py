@@ -146,7 +146,7 @@ def resolve_best_answer(question, answers):
         stop=None,
         temperature=0.7,
     )
-    return [response.choices[0].message["content"].strip()]
+    return response.choices[0].message["content"].strip()
 
 def project_manager(question):
     selected_smes = classify_question(question)
@@ -155,6 +155,9 @@ def project_manager(question):
 
 
 def main():
+    st.set_page_config(page_title="Project Manager with GPT-4")
+
+    st.image("img/logo.png")
     st.title("Project Manager with GPT-4")
     st.write("Ask a question, and get answers from Subject Matter Experts:")
 
@@ -162,17 +165,26 @@ def main():
 
     if st.button("Get Answers"):
         if user_question:
-            with st.spinner("Getting answers from SMEs..."):
-                answers = project_manager(user_question)
+            with st.spinner("Selecting Subject Matter Experts..."):
+                selected_smes = classify_question(user_question)
 
-            st.write("#Responses from SMEs:")
+            st.write("Selected Subject Matter Experts:")
+            for sme in selected_smes:
+                st.text(sme)
+
+            with st.spinner("Getting answers from SMEs..."):
+                sme_responses = consult_smes(user_question, selected_smes)
+
+            answers = {selected_smes[i]: response for i, response in enumerate(sme_responses)}
+
+            st.write("Responses from SMEs:")
             for sme, answer in answers.items():
-                st.write(f"##{sme}:\n{answer}")
+                st.text_area(f"{sme}", value=answer, height=250, disabled=True)
 
             with st.spinner("Resolving the best answer..."):
                 best_answer = resolve_best_answer(user_question, answers)
 
-            st.write(f"#The best answer is:\n{best_answer}")
+            st.text_area("Best Answer", value=best_answer, height=50, disabled=True)
 
         else:
             st.warning("Please enter a question.")
