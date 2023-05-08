@@ -151,5 +151,5 @@ def main():
         st.warning("Please enter a question.")
 
 
-if __name__ == "main":
+if __name__ == "__main__":
     main()
