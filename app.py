@@ -2,9 +2,11 @@ import openai
 import os
 import streamlit as st
 from dotenv import load_dotenv
+from typing import List, Dict
 
 load_dotenv(verbose=True, override=True)
 openai.api_key = os.getenv("OPENAI_API_KEY")
+MODEL = os.getenv("MODEL", "gpt-4")
 
 SUBJECT_MATTER_EXPERTS = [
     # Natural Sciences
@@ -38,7 +40,7 @@ SUBJECT_MATTER_EXPERTS = [
 ]
 
 
-def create_chat_completion(system_prompt, user_prompt):
+def create_chat_completion(system_prompt: str, user_prompt: str) -> openai.ChatCompletion:
     """
     Create a chat completion using OpenAI's GPT-4.
 
@@ -50,7 +52,7 @@ def create_chat_completion(system_prompt, user_prompt):
         openai.ChatCompletion: A ChatCompletion object containing the response.
     """
     return openai.ChatCompletion.create(
-        model="gpt-4",
+        model=MODEL,
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
@@ -62,7 +64,7 @@ def create_chat_completion(system_prompt, user_prompt):
     )
 
 
-def classify_question(question):
+def classify_question(question: str) -> List[str]:
     """
     Classify the given question and select the top 3 most relevant Subject Matter Experts.
 
@@ -73,13 +75,12 @@ def classify_question(question):
         list: A list containing the top 3 most relevant Subject Matter Experts.
     """
     system_prompt = "You are a Project Manager."
-    user_prompt = f"Classify the following question and select the top 3 most relevant Subject Matter Experts from the list: {question}\n\n{', '.join(SUBJECT_MATTER_EXPERTS)}\n\nTop 3 SMEs:"
-
+    user_prompt = f"Classify the following question and select the top 3 most relevant Subject Matter Experts from the list: {question}\n\n{', '.join(SUBJECT_MATTER_EXPERTS)}\n\nRespond by seperating the SMEs by comma.\n\nTop 3 SMEs:"
     response = create_chat_completion(system_prompt, user_prompt)
     return [sme.strip() for sme in response.choices[0].message["content"].strip().split(',')][:3]
 
 
-def consult_smes(question, selected_smes):
+def consult_smes(question: str, selected_smes: List[str]) -> Dict[str, str]:
     """
     Consult the selected Subject Matter Experts and gather their answers.
 
