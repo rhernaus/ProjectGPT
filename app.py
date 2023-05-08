@@ -76,7 +76,7 @@ def classify_question(question):
     user_prompt = f"Classify the following question and select the top 3 most relevant Subject Matter Experts from the list: {question}\n\n{', '.join(SUBJECT_MATTER_EXPERTS)}\n\nTop 3 SMEs:"
 
     response = create_chat_completion(system_prompt, user_prompt)
-    return [sme.strip() for sme in response.choices[0].message["content"].strip().split(',')]
+    return [sme.strip() for sme in response.choices[0].message["content"].strip().split(',')][:3]
 
 
 def consult_smes(question, selected_smes):
@@ -96,7 +96,7 @@ def consult_smes(question, selected_smes):
         user_prompt = f"How would you answer this question: {question}? Let's work this out in a step by step way to be sure we have the right answer."
         response = create_chat_completion(system_prompt, user_prompt)
         responses.append(response.choices[0].message["content"].strip())
-        return {selected_smes[i]: response for i, response in enumerate(responses)}
+    return {selected_smes[i]: response for i, response in enumerate(responses)}
 
 def resolve_best_answer(question, answers):
     """
