@@ -8,36 +8,6 @@ load_dotenv(verbose=True, override=True)
 
 
 MODEL = "gpt-4"
-SUBJECT_MATTER_EXPERTS = [
-    # Natural Sciences
-    "Physicist", "Chemist", "Biologist", "Astronomer", "Earth Scientist",
-    # Social Sciences
-    "Sociologist", "Psychologist", "Anthropologist", "Economist", "Political Scientist",
-    # Humanities
-    "Philosopher", "Historian", "Literary Scholar", "Linguist", "Religious Studies Scholar",
-    # Formal Sciences
-    "Mathematician", "Logician", "Statistician", "Computer Scientist",
-    # Applied Sciences
-    "Engineer", "Medical Doctor", "Architect", "Agricultural Scientist",
-    # Arts
-    "Visual Artist", "Performing Artist", "Musician", "Filmmaker",
-    # Sports and Recreation
-    "Sports Coach", "Fitness Trainer", "Recreational Activities Expert",
-    # Law
-    "Legal Expert", "Constitutional Law Expert", "Criminal Law Expert", "International Law Expert",
-    # Business and Finance
-    "Management Expert", "Finance Expert", "Marketing Expert", "Human Resources Expert",
-    # Education
-    "Pedagogy Expert", "Educational Theory Expert", "Learning Methodologies Expert",
-    # Languages
-    "Language Expert",
-    # Communications
-    "Media Expert", "Journalist", "Public Relations Expert",
-    # Technology
-    "Information Technology Expert", "Artificial Intelligence Expert", "Robotics Expert", "Nanotechnology Expert",
-    # Environment
-    "Ecologist", "Environmental Scientist", "Conservation Expert",
-]
 
 def get_api_key() -> str:
     """
@@ -83,7 +53,7 @@ def classify_question(question: str) -> List[str]:
         list: A list containing the top 3 most relevant Subject Matter Experts.
     """
     system_prompt = "You are a Project Manager."
-    user_prompt = f"Classify the following question and select the top 3 most relevant Subject Matter Experts from the list: {question}\n\n{', '.join(SUBJECT_MATTER_EXPERTS)}\n\nRespond by seperating the SMEs by comma.\n\nTop 3 SMEs:"
+    user_prompt = f"Classify the following question and select the top 3 most relevant Subject Matter Experts. Question: {question}\n\nRespond by seperating the SMEs by comma.\n\nTop 3 SMEs:"
     response = create_chat_completion(system_prompt, user_prompt)
     return [sme.strip() for sme in response.choices[0].message["content"].strip().split(',')][:3]
 
