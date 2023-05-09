@@ -1,7 +1,17 @@
 import streamlit as st
 import projectgpt
-import utils
 import openai
+import os
+
+
+def get_api_key() -> str:
+    """
+    Get the OpenAI API key from the .env file or return None if not found.
+
+    Returns:
+        str: The OpenAI API key or None.
+    """
+    return os.getenv("OPENAI_API_KEY")
 
 
 def answer_question(user_question: str) -> None:
@@ -34,7 +44,7 @@ def main():
     st.set_page_config(page_title="Project Manager with LLM")
     st.title("Project Manager with LLM")
 
-    api_key = utils.get_api_key()
+    api_key = get_api_key()
 
     if api_key is None:
         api_key = st.text_input("Enter your OpenAI API Key:", type="password")
@@ -46,7 +56,7 @@ def main():
     openai.api_key = api_key
 
     # Add a dropdown menu for the user to select the model
-    utils.model = st.selectbox("Select the model to use:", options=["gpt-4", "gpt-3.5-turbo"], index=0)
+    projectgpt.model = st.selectbox("Select the model to use:", options=["gpt-4", "gpt-3.5-turbo"], index=0)
 
     st.write("Ask a question, and get answers from Subject Matter Experts:")
     user_question = st.text_area("Enter your question:")
