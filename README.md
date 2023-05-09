@@ -12,6 +12,7 @@ This application uses OpenAI GPT models, state-of-the-art language models by Ope
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Examples](#examples)
 - [Credits](#credits)
 
 ## Features
@@ -61,6 +62,22 @@ This application uses OpenAI GPT models, state-of-the-art language models by Ope
 3. Enter your question in the text area and click "Get Answers".
 
 4. The app will display the selected Subject Matter Experts, their responses, and the best answer for your question.
+
+## Examples
+
+Q: One end of a Nichrome wire of length 2L and cross-sectional area A is attached to an end of another Nichrome wire of length L and cross- sectional area 2A. If the free end of the longer wire is at an electric potential of 8.0 volts, and the free end of the shorter wire is at an electric potential of 1.0 volt, the potential at the junction of the two wires is most nearly equal to
+(A) 2.4 V
+(B) 3.3 V
+(C) 4.5 V
+(D) 5.7 V
+
+**Answers:**
+| Model                   | Answer | Score       |
+|-------------------------|--------|-------------|
+| GPT-3.5                 | D      | Incorrect   |
+| GPT-4                   | D      | Incorrect   |
+| ProjectGPT with GPT-3.5 | C      | Incorrect   |
+| ProjectGPT with GPT-4   | A      | **Correct** |
 
 ## Credits
 
