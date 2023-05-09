@@ -4,6 +4,8 @@
 
 This application uses OpenAI GPT models, state-of-the-art language models by OpenAI, to simulate a project manager who can provide expert answers to your questions across various fields.
 
+![Architecture](architecture.png)
+
 ## Table of Contents
 
 - [Features](#features)
