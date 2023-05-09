@@ -83,5 +83,5 @@ Q: One end of a Nichrome wire of length 2L and cross-sectional area A is attache
 
 This application is built using:
 
-- [OpenAI GPT-4](https://beta.openai.com/docs/models/gpt-4) for generating expert responses.
+- [OpenAI GPT-4](https://beta.openai.com/docs/models/gpt-4) and [GPT-3.5](https://beta.openai.com/docs/models/gpt-3-5) for generating expert responses.
 - [Streamlit](https://www.streamlit.io/) for creating the web interface.
