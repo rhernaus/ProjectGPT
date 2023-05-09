@@ -53,7 +53,9 @@ def classify_question(question: str) -> List[str]:
         list: A list containing the top 3 most relevant Subject Matter Experts.
     """
     system_prompt = "You are a Project Manager."
-    user_prompt = f"Classify the following question and select the top 3 most relevant Subject Matter Experts. Question: {question}\n\nRespond by seperating the SMEs by comma.\n\nTop 3 SMEs:"
+    user_prompt = "Classify the following question and select the top 3 most relevant Subject Matter Experts. "
+    user_prompt += f"Question: {question}. Respond with a comma-seperated list of SMEs."
+    user_prompt += "Comma seperated list of top 3 SMEs:"
     response = create_chat_completion(system_prompt, user_prompt)
     return [sme.strip() for sme in response.choices[0].message["content"].strip().split(',')][:3]
 
