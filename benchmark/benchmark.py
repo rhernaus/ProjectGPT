@@ -3,7 +3,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 import json
-import projectgpt
+from projectgpt import projectgpt
 import openai
 import os
 import time

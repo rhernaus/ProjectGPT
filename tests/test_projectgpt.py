@@ -1,5 +1,5 @@
 import unittest
-import projectgpt
+from projectgpt import projectgpt
 from unittest.mock import MagicMock, patch
 
 class TestProjectGPT(unittest.TestCase):
@@ -19,21 +19,21 @@ class TestProjectGPT(unittest.TestCase):
         mock_create.assert_called_once()
 
     def test_answer_question_direct(self):
-        with patch("projectgpt.handle_rate_limit_errors") as mock_handle_rate_limit_errors:
+        with patch("projectgpt.projectgpt.handle_rate_limit_errors") as mock_handle_rate_limit_errors:
             projectgpt.answer_question(self.sample_question, "direct")
         mock_handle_rate_limit_errors.assert_called_once()
 
     def test_answer_question_consult(self):
-        with patch("projectgpt.classify_question") as mock_classify_question, \
-                patch("projectgpt.consult_smes") as mock_consult_smes, \
-                patch("projectgpt.resolve_best_answer") as mock_resolve_best_answer:
+        with patch("projectgpt.projectgpt.classify_question") as mock_classify_question, \
+                patch("projectgpt.projectgpt.consult_smes") as mock_consult_smes, \
+                patch("projectgpt.projectgpt.resolve_best_answer") as mock_resolve_best_answer:
             projectgpt.answer_question(self.sample_question, "consult")
         mock_classify_question.assert_called_once()
         mock_consult_smes.assert_called_once()
         mock_resolve_best_answer.assert_called_once()
 
     def test_classify_question(self):
-        with patch("projectgpt.handle_rate_limit_errors") as mock_handle_rate_limit_errors:
+        with patch("projectgpt.projectgpt.handle_rate_limit_errors") as mock_handle_rate_limit_errors:
             mock_handle_rate_limit_errors.return_value = MagicMock(
                 choices=[
                     MagicMock(
@@ -47,12 +47,12 @@ class TestProjectGPT(unittest.TestCase):
         mock_handle_rate_limit_errors.assert_called_once()
 
     def test_consult_sme(self):
-        with patch("projectgpt.handle_rate_limit_errors") as mock_handle_rate_limit_errors:
+        with patch("projectgpt.projectgpt.handle_rate_limit_errors") as mock_handle_rate_limit_errors:
             projectgpt.consult_sme("SME", self.sample_question)
         mock_handle_rate_limit_errors.assert_called_once()
 
     def test_consult_smes(self):
-        with patch("projectgpt.ThreadPoolExecutor") as mock_executor:
+        with patch("projectgpt.projectgpt.ThreadPoolExecutor") as mock_executor:
             projectgpt.consult_smes(self.sample_question, ["SME1", "SME2"])
         mock_executor.assert_called_once()
 
@@ -61,7 +61,7 @@ class TestProjectGPT(unittest.TestCase):
             "SME1": "Answer 1",
             "SME2": "Answer 2",
         }
-        with patch("projectgpt.handle_rate_limit_errors") as mock_handle_rate_limit_errors:
+        with patch("projectgpt.projectgpt.handle_rate_limit_errors") as mock_handle_rate_limit_errors:
             projectgpt.resolve_best_answer(self.sample_question, answers)
         mock_handle_rate_limit_errors.assert_called_once()
 

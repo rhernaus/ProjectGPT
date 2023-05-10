@@ -41,7 +41,7 @@ class TestBenchmark(unittest.TestCase):
         self.assertEqual(formatted_question, expected_question)
 
     def test_get_answer(self):
-        with patch("projectgpt.answer_question") as mock_answer_question:
+        with patch("projectgpt.projectgpt.answer_question") as mock_answer_question:
             benchmark.get_answer("question", "mode")
         mock_answer_question.assert_called_once()
 
