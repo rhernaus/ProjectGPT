@@ -1,7 +1,10 @@
 import streamlit as st
-import projectgpt
+from projectgpt import projectgpt
 import openai
 import os
+from dotenv import load_dotenv
+
+load_dotenv(verbose=True, override=True)
 
 def get_api_key() -> str:
     """
