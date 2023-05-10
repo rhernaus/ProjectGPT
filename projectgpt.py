@@ -94,7 +94,7 @@ def classify_question(question: str) -> List[str]:
     user_prompt = "Classify the following question and select the top 3 most relevant Subject Matter Experts. "
     user_prompt += f"Question: {question}."
     user_prompt += 'Respond with the top 3 SMEs in the following JSON template. Do NOT print anything else! {"smes": ["sme", "sme", "sme"]}: '
-    response = handle_rate_limit_errors(create_chat_completion, 60, system_prompt, user_prompt)
+    response = handle_rate_limit_errors(create_chat_completion, 300, system_prompt, user_prompt)
     # Parse the JSON response into a list
     response = json.loads(response.choices[0].message["content"])
     # Return the top 3 most relevant Subject Matter Experts
@@ -114,7 +114,7 @@ def consult_sme(sme: str, question: str) -> Dict[str, str]:
     """
     system_prompt = f"You are a {sme}."
     user_prompt = f"How would you answer this question: {question}? Let's work this out in a step by step way to be sure we have the right answer."
-    response = handle_rate_limit_errors(create_chat_completion, 60, system_prompt, user_prompt)
+    response = handle_rate_limit_errors(create_chat_completion, 300, system_prompt, user_prompt)
     return {sme: response.choices[0].message["content"].strip()}
 
 
@@ -150,5 +150,5 @@ def resolve_best_answer(question, answers):
     for i, (sme, answer) in enumerate(answers.items()):
         user_prompt += f"{i + 1}. {sme}: {answer}\n"
     user_prompt += f"\nThe best answer and reason why is: "
-    response = handle_rate_limit_errors(create_chat_completion, 60, system_prompt, user_prompt)
+    response = handle_rate_limit_errors(create_chat_completion, 300, system_prompt, user_prompt)
     return response.choices[0].message["content"].strip()

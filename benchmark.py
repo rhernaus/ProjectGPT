@@ -70,7 +70,7 @@ def main():
     total_time_taken = time.time() - total_start_time
     print(f"Total time taken: {total_time_taken:.2f}s")
 
-    performance = correct_answers / total_answers * 100
+    performance = correct_answers / total_answers * 100 if total_answers > 0 else 0
     print(f"Performance: {performance:.2f}%")
 
     # Save the final results
