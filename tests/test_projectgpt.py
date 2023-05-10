@@ -23,11 +23,11 @@ class TestProjectGPT(unittest.TestCase):
             projectgpt.answer_question(self.sample_question, "direct")
         mock_handle_rate_limit_errors.assert_called_once()
 
-    def test_answer_question_projectgpt(self):
+    def test_answer_question_consult(self):
         with patch("projectgpt.classify_question") as mock_classify_question, \
                 patch("projectgpt.consult_smes") as mock_consult_smes, \
                 patch("projectgpt.resolve_best_answer") as mock_resolve_best_answer:
-            projectgpt.answer_question(self.sample_question, "projectgpt")
+            projectgpt.answer_question(self.sample_question, "consult")
         mock_classify_question.assert_called_once()
         mock_consult_smes.assert_called_once()
         mock_resolve_best_answer.assert_called_once()

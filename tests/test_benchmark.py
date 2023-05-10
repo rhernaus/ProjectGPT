@@ -1,5 +1,5 @@
 import unittest
-import benchmark
+from benchmark import benchmark
 import json
 from unittest.mock import patch
 
@@ -41,20 +41,20 @@ class TestBenchmark(unittest.TestCase):
         self.assertEqual(formatted_question, expected_question)
 
     def test_get_answer(self):
-        with patch("benchmark.projectgpt.answer_question") as mock_answer_question:
+        with patch("projectgpt.answer_question") as mock_answer_question:
             benchmark.get_answer("question", "mode")
         mock_answer_question.assert_called_once()
 
     def test_main(self):
-        with patch("benchmark.load_dotenv") as mock_load_dotenv, \
-            patch("benchmark.load_tasks", return_value=[{
+        with patch("benchmark.benchmark.load_dotenv") as mock_load_dotenv, \
+            patch("benchmark.benchmark.load_tasks", return_value=[{
                 "subject": "Geography",
                 "question": "What is the capital of France?",
                 "options": ["A. Paris", "B. London", "C. Madrid"],
                 "correct_option_index": 0,
             }]) as mock_load_tasks, \
-            patch("benchmark.format_question") as mock_format_question, \
-            patch("benchmark.get_answer", return_value=("A. Paris", 1)) as mock_get_answer, \
+            patch("benchmark.benchmark.format_question") as mock_format_question, \
+            patch("benchmark.benchmark.get_answer", return_value=("A. Paris", 1)) as mock_get_answer, \
             patch("builtins.open", unittest.mock.mock_open()):
             benchmark.main()
         mock_load_dotenv.assert_called_once()
