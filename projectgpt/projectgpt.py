@@ -23,7 +23,7 @@ def handle_rate_limit_errors(func, timeout=None, *args, **kwargs):
     """
     max_retries = 5
     backoff_factor = 2
-    delay = 1
+    delay = 5
 
     for attempt in range(max_retries):
         try:
@@ -93,12 +93,15 @@ def classify_question(question: str) -> List[str]:
     system_prompt = "You are a Project Manager."
     user_prompt = "Classify the following question and select the top 3 most relevant Subject Matter Experts. "
     user_prompt += f"Question: {question}."
-    user_prompt += 'Respond with the top 3 SMEs in the following JSON template. Do NOT print anything else! {"smes": ["sme", "sme", "sme"]}: '
+    user_prompt += 'You must respond with the top 3 SMEs in the following JSON template. Do NOT print anything else! {"smes": ["sme", "sme", "sme"]}: '
     response = handle_rate_limit_errors(create_chat_completion, 300, system_prompt, user_prompt)
     # Parse the JSON response into a list
-    response = json.loads(response.choices[0].message["content"])
-    # Return the top 3 most relevant Subject Matter Experts
-    return response["smes"][:3]
+    try:
+        response = json.loads(response.choices[0].message["content"])
+        return response["smes"][:3]
+    except json.decoder.JSONDecodeError as e:
+        print("Error: Invalid JSON response. Error: ", e)
+        return ["sme"]
 
 
 def consult_sme(sme: str, question: str) -> Dict[str, str]:
@@ -113,7 +116,7 @@ def consult_sme(sme: str, question: str) -> Dict[str, str]:
         dict: A dictionary containing the response from the SME.
     """
     system_prompt = f"You are a {sme}."
-    user_prompt = f"How would you answer this question: {question}? Let's work this out in a step by step way to be sure we have the right answer."
+    user_prompt = f"How would you answer this question: {question}? Let's work this out in a step by step way to be sure we have the right answer. Respond with your reasoning and include your answer at the end."
     response = handle_rate_limit_errors(create_chat_completion, 300, system_prompt, user_prompt)
     return {sme: response.choices[0].message["content"].strip()}
 
@@ -149,6 +152,6 @@ def resolve_best_answer(question, answers):
     user_prompt += f"Given the question '{question}' and the following answers:\n\n"
     for i, (sme, answer) in enumerate(answers.items()):
         user_prompt += f"{i + 1}. {sme}: {answer}\n"
-    user_prompt += f"\nThe best answer and reason why is: "
+    user_prompt += f"\nPlease select only one correct answer without providing any explanation. To submit your response, simply print the chosen option. Answer: "
     response = handle_rate_limit_errors(create_chat_completion, 300, system_prompt, user_prompt)
     return response.choices[0].message["content"].strip()

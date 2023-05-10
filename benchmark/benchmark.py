@@ -34,7 +34,7 @@ def main():
     load_dotenv(verbose=True, override=True)
     openai.api_key = os.getenv("OPENAI_API_KEY")
 
-    mode = "direct" # "direct" or "consult"
+    mode = "consult" # "direct" or "consult"
 
     total_start_time = time.time()
     tasks = load_tasks()

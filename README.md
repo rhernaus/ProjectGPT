@@ -64,21 +64,16 @@ This application uses OpenAI GPT models, state-of-the-art language models by Ope
 
 4. The app will display the selected Subject Matter Experts, their responses, and the best answer for your question.
 
-## Examples
+## Benchmark
 
-Q: One end of a Nichrome wire of length 2L and cross-sectional area A is attached to an end of another Nichrome wire of length L and cross- sectional area 2A. If the free end of the longer wire is at an electric potential of 8.0 volts, and the free end of the shorter wire is at an electric potential of 1.0 volt, the potential at the junction of the two wires is most nearly equal to
-(A) 2.4 V
-(B) 3.3 V
-(C) 4.5 V
-(D) 5.7 V
+The following table shows the performance on the 57 tasks from the [MEASURING MASSIVE MULTITASK LANGUAGE UNDERSTANDING paper](https://arxiv.org/abs/2009.03300).
 
-**Answers:**
-| Model                   | Answer | Score       |
-|-------------------------|--------|-------------|
-| GPT-3.5                 | D      | Incorrect   |
-| GPT-4                   | D      | Incorrect   |
-| ProjectGPT with GPT-3.5 | C      | Incorrect   |
-| ProjectGPT with GPT-4   | A      | **Correct** |
+| Model                    | Mode           | Performance | Time (s) | Results |
+|--------------------------|----------------|-------------|----------|---------|
+| gpt-3.5-turbo            | Zero-shot      | 50.9%       | 153      | [file](benchmark/performance_final_202305101112_gpt35turbo_direct.json) |
+| gpt-4                    | Zero-shot      | 61.4%       | 251      | [file](benchmark/performance_final_202305101117_gpt4_direct.json) |
+| gpt-3.5-turbo            | Consult 3 SMEs | 50.9%       | 1127     | [file](benchmark/performance_final_202305101429_gpt35turbo_consult.json) |
+| gpt-4                    | Consult 3 SMEs | 73.7%       | 5429     | [file](benchmark/performance_final_202305101607_gpt4_consult.json) |
 
 ## Credits
 

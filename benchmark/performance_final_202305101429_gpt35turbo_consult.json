@@ -1,0 +1,519 @@
+{
+    "performance": 50.877192982456144,
+    "time_taken": 1126.595318555832,
+    "results": [
+        {
+            "timestamp": "2023-05-10 14:10:58",
+            "mode": "consult",
+            "question": "This question refers to the following information. \u201cSociety in every state is a blessing, but government even in its best state is but a necessary evil; in its worst state an intolerable one; for when we suffer, or are exposed to the same miseries by a government, which we might expect in a country without government, our calamity is heightened by reflecting that we furnish the means by which we suffer. Government, like dress, is the badge of lost innocence; the palaces of kings are built on the ruins of the bowers of paradise. For were the impulses of conscience clear, uniform, and irresistibly obeyed, man would need no other lawgiver; but that not being the case, he finds it necessary to surrender up a part of his property to furnish means for the protection of the rest; and this he is induced to do by the same prudence which in every other case advises him out of two evils to choose the least. Wherefore, security being the true design and end of government, it unanswerably follows that whatever form thereof appears most likely to ensure it to us, with the least expense and greatest benefit, is preferable to all others.\u201d Thomas Paine, Common Sense, 1776 Which of the following \u201cmiseries\u201d alluded to above were most condemned by Anti-Federalists of the post-Revolutionary era?",
+            "answer": "C",
+            "correct_answer": "C) Federal response to the Whiskey Rebellion.",
+            "score": 1,
+            "time_taken": 33.30413842201233
+        },
+        {
+            "timestamp": "2023-05-10 14:11:18",
+            "mode": "consult",
+            "question": "An observational study in diabetics assesses the role of an increased plasma fibrinogen level on the risk of cardiac events. 130 diabetic patients are followed for 5 years to assess the development of acute coronary syndrome. In the group of 60 patients with a normal baseline plasma fibrinogen level, 20 develop acute coronary syndrome and 40 do not. In the group of 70 patients with a high baseline plasma fibrinogen level, 40 develop acute coronary syndrome and 30 do not. Which of the following is the best estimate of relative risk in patients with a high baseline plasma fibrinogen level compared to patients with a normal baseline plasma fibrinogen level?",
+            "answer": "D",
+            "correct_answer": "C) (40*70)/(20*60)",
+            "score": 0,
+            "time_taken": 19.74491286277771
+        },
+        {
+            "timestamp": "2023-05-10 14:11:49",
+            "mode": "consult",
+            "question": "Consider a computer design in which multiple processors, each with a private cache memory, share global memory using a single bus. This bus is the critical system resource. Each processor can execute one instruction every 500 nanoseconds as long as memory references are satisfied by its local cache. When a cache miss occurs, the processor is delayed for an additional 2,000 nanoseconds. During half of this additional delay, the bus is dedicated to serving the cache miss. During the other half, the processor cannot continue, but the bus is free to service requests from other processors. On average, each instruction requires 2 memory references. On average, cache misses occur on 1 percent of references. What proportion of the capacity of the bus would a single processor consume, ignoring delays due to competition from other processors?",
+            "answer": "B) 1/27",
+            "correct_answer": "B) 1/27",
+            "score": 1,
+            "time_taken": 30.73004150390625
+        },
+        {
+            "timestamp": "2023-05-10 14:11:59",
+            "mode": "consult",
+            "question": "Jonathan obtained a score of 80 on a statistics exam, placing him at the 90th percentile. Suppose five points are added to everyone's score. Jonathan's new score will be at the",
+            "answer": "B) 85th percentile.",
+            "correct_answer": "C) 90th percentile.",
+            "score": 0,
+            "time_taken": 10.398503065109253
+        },
+        {
+            "timestamp": "2023-05-10 14:12:34",
+            "mode": "consult",
+            "question": "A list of numbers has n elements, indexed from 1 to n. The following algorithm is intended to display the number of elements in the list that have a value greater than 100. The algorithm uses the variables count and position. Steps 3 and 4 are missing. Step 1: Set count to 0 and position to 1. Step 2: If the value of the element at index position is greater than 100, increase the value of count by 1. Step 3: (missing step) Step 4: (missing step) Step 5: Display the value of count. Which of the following could be used to replace steps 3 and 4 so that the algorithm works as intended?",
+            "answer": "B",
+            "correct_answer": "D) Step 3: Repeat step 2 until the value of position is greater than n. Step 4: Increase the value of count by 1.",
+            "score": 0,
+            "time_taken": 35.143802881240845
+        },
+        {
+            "timestamp": "2023-05-10 14:12:56",
+            "mode": "consult",
+            "question": "Why is it that anti-virus scanners would not have found an exploitation of Heartbleed?",
+            "answer": "D",
+            "correct_answer": "D) Anti-virus scanners tend to look for viruses and other malicious code, but Heartbleed exploits steal secrets without injecting any code",
+            "score": 1,
+            "time_taken": 21.8025062084198
+        },
+        {
+            "timestamp": "2023-05-10 14:13:05",
+            "mode": "consult",
+            "question": "How many attempts should you make to cannulate a patient before passing the job on to a senior colleague?",
+            "answer": "C) 2",
+            "correct_answer": "C) 2",
+            "score": 1,
+            "time_taken": 8.608511686325073
+        },
+        {
+            "timestamp": "2023-05-10 14:13:12",
+            "mode": "consult",
+            "question": "Researchers now believe that the decline of the Maya was caused chiefly by:",
+            "answer": "B",
+            "correct_answer": "B) ecological degradation resulting from slash-and-burn farming techniques.",
+            "score": 1,
+            "time_taken": 7.5999205112457275
+        },
+        {
+            "timestamp": "2023-05-10 14:13:25",
+            "mode": "consult",
+            "question": "A model airplane flies slower when flying into the wind and faster with wind at its back. When launched at right angles to the wind, a cross wind, its groundspeed compared with flying in still air is",
+            "answer": "A) the same.",
+            "correct_answer": "B) greater",
+            "score": 0,
+            "time_taken": 12.408066987991333
+        },
+        {
+            "timestamp": "2023-05-10 14:13:46",
+            "mode": "consult",
+            "question": "If the government subsidizes producers in a perfectly competitive market, then",
+            "answer": "Answer: D) the consumer surplus will decrease.",
+            "correct_answer": "C) the consumer surplus will increase",
+            "score": 0,
+            "time_taken": 21.660911798477173
+        },
+        {
+            "timestamp": "2023-05-10 14:14:13",
+            "mode": "consult",
+            "question": "A 63-year-old man is brought to the emergency department because of a 4-day history of increasingly severe left leg pain and swelling of his left calf. He also has a 1-month history of increasingly severe upper midthoracic back pain. During this time, he has had a 9-kg (20-lb) weight loss despite no change in appetite. He has no history of major medical illness. His only medication is ibuprofen. He is 180 cm (5 ft 11 in) tall and weighs 82 kg (180 lb); BMI is 25 kg/m2 . His vital signs are within normal limits. On examination, lower extremity pulses are palpable bilaterally. The remainder of the physical examination shows no abnormalities. An x-ray of the thoracic spine shows no abnormalities. A CT scan of the abdomen shows a 3-cm mass in the body of the pancreas; there are liver metastases and encasement of the superior mesenteric artery. Ultrasonography of the left lower extremity shows a femoropopliteal venous clot. Which of the following is the most likely cause of this patient's symptoms?",
+            "answer": "B",
+            "correct_answer": "B) Hypercoagulability from advanced malignancy",
+            "score": 1,
+            "time_taken": 26.62986660003662
+        },
+        {
+            "timestamp": "2023-05-10 14:14:23",
+            "mode": "consult",
+            "question": "This question refers to the following information. Albeit the king's Majesty justly and rightfully is and ought to be the supreme head of the Church of England, and so is recognized by the clergy of this realm in their convocations, yet nevertheless, for corroboration and confirmation thereof, and for increase of virtue in Christ's religion within this realm of England, and to repress and extirpate all errors, heresies, and other enormities and abuses heretofore used in the same, be it enacted, by authority of this present Parliament, that the king, our sovereign lord, his heirs and successors, kings of this realm, shall be taken, accepted, and reputed the only supreme head in earth of the Church of England, called Anglicans Ecclesia; and shall have and enjoy, annexed and united to the imperial crown of this realm, as well the title and style thereof, as all honors, dignities, preeminences, jurisdictions, privileges, authorities, immunities, profits, and commodities to the said dignity of the supreme head of the same Church belonging and appertaining; and that our said sovereign lord, his heirs and successors, kings of this realm, shall have full power and authority from time to time to visit, repress, redress, record, order, correct, restrain, and amend all such errors, heresies, abuses, offenses, contempts, and enormities, whatsoever they be, which by any manner of spiritual authority or jurisdiction ought or may lawfully be reformed, repressed, ordered, redressed, corrected, restrained, or amended, most to the pleasure of Almighty God, the increase of virtue in Christ's religion, and for the conservation of the peace, unity, and tranquility of this realm; any usage, foreign land, foreign authority, prescription, or any other thing or things to the contrary hereof notwithstanding. English Parliament, Act of Supremacy, 1534From the passage, one may infer that the English Parliament wished to argue that the Act of Supremacy would",
+            "answer": "A",
+            "correct_answer": "D) end various forms of corruption plaguing the Church in England",
+            "score": 0,
+            "time_taken": 9.938956499099731
+        },
+        {
+            "timestamp": "2023-05-10 14:15:10",
+            "mode": "consult",
+            "question": "A 6-sided die is rolled 15 times and the results are: side 1 comes up 0 times; side 2: 1 time; side 3: 2 times; side 4: 3 times; side 5: 4 times; side 6: 5 times. Based on these results, what is the probability of side 3 coming up when using Add-1 Smoothing?",
+            "answer": "B) 1/7",
+            "correct_answer": "B) 1/7",
+            "score": 1,
+            "time_taken": 47.59908080101013
+        },
+        {
+            "timestamp": "2023-05-10 14:15:37",
+            "mode": "consult",
+            "question": "Krete is an unmarried taxpayer with income exclusively from wages. By December 31, year 1, Krete's employer has withheld $16,000 in federal income taxes and Krete has made no estimated tax payments. On April 15, year 2, Krete timely filed for an extension request to file her individual tax return, and paid $300 of additional taxes. Krete's year 1 tax liability was $16,500 when she timely filed her return on April 30, year 2, and paid the remaining tax liability balance. What amount would be subject to the penalty for underpayment of estimated taxes?",
+            "answer": "B) $500",
+            "correct_answer": "A) $0",
+            "score": 0,
+            "time_taken": 26.456315279006958
+        },
+        {
+            "timestamp": "2023-05-10 14:15:52",
+            "mode": "consult",
+            "question": "For which of these two scenarios does the main character (who uses I/me/my) do something clearly morally wrong? Scenario 1 | I drive very fast when I'm on a racetrack. Scenario 2 | I drive very fast when I'm in the suburbs.",
+            "answer": "C) Not wrong, Wrong.",
+            "correct_answer": "C) Not wrong, Wrong",
+            "score": 1,
+            "time_taken": 15.631681442260742
+        },
+        {
+            "timestamp": "2023-05-10 14:16:09",
+            "mode": "consult",
+            "question": "The Great Cloud Sutra prophesied the imminent arrival of which person?",
+            "answer": "A",
+            "correct_answer": "A) Maitreya (Milo)",
+            "score": 1,
+            "time_taken": 16.28329086303711
+        },
+        {
+            "timestamp": "2023-05-10 14:16:31",
+            "mode": "consult",
+            "question": "During the third stage of the demographic transition model, which of the following is true?",
+            "answer": "B",
+            "correct_answer": "B) Birth rates decline and population growth rate is less rapid.",
+            "score": 1,
+            "time_taken": 21.901549100875854
+        },
+        {
+            "timestamp": "2023-05-10 14:16:50",
+            "mode": "consult",
+            "question": "Determine whether the statements are logically equivalent or contradictory. If neither, determine whether they are consistent or inconsistent: E \u2283 (F \u00b7 E) and ~ E \u00b7 F",
+            "answer": "C) Neither logically equivalent nor contradictory, but consistent.",
+            "correct_answer": "C) Neither logically equivalent nor contradictory, but consistent",
+            "score": 1,
+            "time_taken": 19.453083753585815
+        },
+        {
+            "timestamp": "2023-05-10 14:17:15",
+            "mode": "consult",
+            "question": "In a genetic test of a newborn, a rare genetic disorder is found that has X-linked recessive transmission. Which of the following statements is likely true regarding the pedigree of this disorder?",
+            "answer": "C",
+            "correct_answer": "C) All daughters of an affected male will be affected.",
+            "score": 1,
+            "time_taken": 25.28701138496399
+        },
+        {
+            "timestamp": "2023-05-10 14:17:33",
+            "mode": "consult",
+            "question": "Which of the following statements about the lanthanide elements is NOT true?",
+            "answer": "C",
+            "correct_answer": "D) The atomic radii of the lanthanide elements increase across the period from La to Lu",
+            "score": 0,
+            "time_taken": 17.679450511932373
+        },
+        {
+            "timestamp": "2023-05-10 14:17:44",
+            "mode": "consult",
+            "question": "You work for a utility company that is building a biomass plant in the community. Your employer asks you to give a series of community talks about the plant and future operations. You visit the plant several hours before you are due to give a speech that has been prepared by your immediate supervisor. During the tour of the plant, you discover several claims in the speech are not true. What do you do?",
+            "answer": "D",
+            "correct_answer": "D) Address the inaccuracies with your supervisor immediately and make the necessary corrections before giving the speech.",
+            "score": 1,
+            "time_taken": 10.835956811904907
+        },
+        {
+            "timestamp": "2023-05-10 14:18:11",
+            "mode": "consult",
+            "question": "Would a reservation to the definition of torture in the ICCPR be acceptable in contemporary practice?",
+            "answer": "C",
+            "correct_answer": "B) This is an unacceptable reservation because it contravenes the object and purpose of the ICCPR",
+            "score": 0,
+            "time_taken": 27.190531969070435
+        },
+        {
+            "timestamp": "2023-05-10 14:19:03",
+            "mode": "consult",
+            "question": "Which of the following is not included in the U.S. GDP?",
+            "answer": "Answer: A) The U.S. military opens a new base in a foreign country with 1000 U.S. personnel.",
+            "correct_answer": "C) An American pop singer performs a sold-out concert in Paris.",
+            "score": 0,
+            "time_taken": 51.885751485824585
+        },
+        {
+            "timestamp": "2023-05-10 14:19:36",
+            "mode": "consult",
+            "question": "While swimming in the ocean, Ivan is frightened by a dark shadow in the water even before he has the chance to identify what the shadow is. The synaptic connections taking place during this incident of fright are best described by which of the following?",
+            "answer": "A",
+            "correct_answer": "A) Messages are sent from the thalamus directly to the amygdala.",
+            "score": 1,
+            "time_taken": 32.998342990875244
+        },
+        {
+            "timestamp": "2023-05-10 14:19:59",
+            "mode": "consult",
+            "question": "The night before his bar examination, the examinee's next-door neighbor was having a party. The music from the neighbor's home was so loud that the examinee couldn't fall asleep. The examinee called the neighbor and asked her to please keep the noise down. The neighbor then abruptly hung up. Angered, the examinee went into his closet and got a gun. He went outside and fired a bullet through the neighbor's living room window. Not intending to shoot anyone, the examinee fired his gun at such an angle that the bullet would hit the ceiling. He merely wanted to cause some damage to the neighbor's home to relieve his angry rage. The bullet, however, ricocheted off the ceiling and struck a partygoer in the back, killing him. The jurisdiction makes it a misdemeanor to discharge a firearm in public. The examinee will most likely be found guilty for which of the following crimes in connection to the death of the partygoer?",
+            "answer": "D) Discharge of a firearm in public.",
+            "correct_answer": "A) Murder.",
+            "score": 0,
+            "time_taken": 23.44572353363037
+        },
+        {
+            "timestamp": "2023-05-10 14:20:23",
+            "mode": "consult",
+            "question": "John Stuart Mill: Each person's happiness is a good to that person, and the general happiness, therefore, a good to the aggregate of all persons.",
+            "answer": "None of the above.",
+            "correct_answer": "A) Fallacy of Composition",
+            "score": 0,
+            "time_taken": 23.18739604949951
+        },
+        {
+            "timestamp": "2023-05-10 14:20:26",
+            "mode": "consult",
+            "question": "Let A be a real 2 x 2 matrix. Which of the following statements must be true? I. All of the entries of A2 are nonnegative. II. The determinant of A2 is nonnegative. III. If A has two distinct eigenvalues, then A2 has two distinct eigenvalues.",
+            "answer": "Option D.",
+            "correct_answer": "B) II only",
+            "score": 0,
+            "time_taken": 3.1711530685424805
+        },
+        {
+            "timestamp": "2023-05-10 14:20:51",
+            "mode": "consult",
+            "question": "In response to Sandel's \u201csocial justice\u201d argument, Kamm argues that",
+            "answer": "A",
+            "correct_answer": "D) all of the above",
+            "score": 0,
+            "time_taken": 25.50341796875
+        },
+        {
+            "timestamp": "2023-05-10 14:21:08",
+            "mode": "consult",
+            "question": "According to Lewin, Lippet and White's 1939 experiment, which form of leadership produced the most work from participants?",
+            "answer": "B) Democratic.",
+            "correct_answer": "C) Authoritarian",
+            "score": 0,
+            "time_taken": 16.548182010650635
+        },
+        {
+            "timestamp": "2023-05-10 14:21:31",
+            "mode": "consult",
+            "question": "Three contrasting tactics that CSO's can engage in to meet their aims are which typically involves research and communication, , which may involve physically attacking a company's operations or , often involving some form of .",
+            "answer": "D",
+            "correct_answer": "C) Indirect action, Violent direct action, Non-violent direct-action Boycott.",
+            "score": 0,
+            "time_taken": 23.03520441055298
+        },
+        {
+            "timestamp": "2023-05-10 14:22:00",
+            "mode": "consult",
+            "question": "Which position does Rawls claim is the least likely to be adopted by the POP (people in the original position)?",
+            "answer": "D",
+            "correct_answer": "A) The POP would choose equality above liberty.",
+            "score": 0,
+            "time_taken": 29.154611110687256
+        },
+        {
+            "timestamp": "2023-05-10 14:22:20",
+            "mode": "consult",
+            "question": "Which of the following best states an argument made by James Madison in The Federalist number 10?",
+            "answer": "C",
+            "correct_answer": "C) The negative effects of factionalism can be reduced by a republican government.",
+            "score": 1,
+            "time_taken": 19.95472025871277
+        },
+        {
+            "timestamp": "2023-05-10 14:22:30",
+            "mode": "consult",
+            "question": "This question refers to the following information. \u201cThe real grievance of the worker is the insecurity of his existence; he is not sure that he will always have work, he is not sure that he will always be healthy, and he foresees that he will one day be old and unfit to work. If he falls into poverty, even if only through a prolonged illness, he is then completely helpless, left to his own devices, and society does not currently recognize any real obligation towards him beyond the usual help for the poor, even if he has been working all the time ever so faithfully and diligently. The usual help for the poor, however, leaves a lot to be desired, especially in large cities, where it is very much worse than in the country.\u201d Otto von Bismarck, 1884 Otto von Bismarck likely made this speech in reaction to which of the following issues?",
+            "answer": "D",
+            "correct_answer": "C) Criticisms of German trade tariffs.",
+            "score": 0,
+            "time_taken": 9.729966878890991
+        },
+        {
+            "timestamp": "2023-05-10 14:22:47",
+            "mode": "consult",
+            "question": "Which of the following is the most plausible explanation for the protective effect of dietary fibre against cancer of the colon?",
+            "answer": "C",
+            "correct_answer": "C) Butyric acid, formed during colonic fibre fermentation stimulates anti-oxidant defences in the colon",
+            "score": 1,
+            "time_taken": 16.90360116958618
+        },
+        {
+            "timestamp": "2023-05-10 14:23:05",
+            "mode": "consult",
+            "question": "A point pole has a strength of 4\u03c0 x 10-4 weber. The force in newtons on a point pole of 4\u03c0 x 1.5 x 10-4 weber placed at a distance of 10 cm from it will be:",
+            "answer": "D) 3.75 N",
+            "correct_answer": "A) 15 N",
+            "score": 0,
+            "time_taken": 17.9068865776062
+        },
+        {
+            "timestamp": "2023-05-10 14:23:20",
+            "mode": "consult",
+            "question": "According to Moore's \u201cideal utilitarianism,\u201d the right action is the one that brings about the greatest amount of:",
+            "answer": "B) happiness.",
+            "correct_answer": "C) good.",
+            "score": 0,
+            "time_taken": 15.516483545303345
+        },
+        {
+            "timestamp": "2023-05-10 14:23:46",
+            "mode": "consult",
+            "question": "Which of the following statements most closely corresponds with differential association theory?",
+            "answer": "None of the above.",
+            "correct_answer": "A) If all of your friends jumped off a bridge, I suppose you would too.",
+            "score": 0,
+            "time_taken": 26.160611629486084
+        },
+        {
+            "timestamp": "2023-05-10 14:24:03",
+            "mode": "consult",
+            "question": "In a given population, 1 out of every 400 people has a cancer caused by a completely recessive allele, b. Assuming the population is in Hardy-Weinberg equilibrium, which of the following is the expected proportion of individuals who carry the b allele but are not expected to develop the cancer?",
+            "answer": "D",
+            "correct_answer": "D) 38/400",
+            "score": 1,
+            "time_taken": 16.73457908630371
+        },
+        {
+            "timestamp": "2023-05-10 14:24:14",
+            "mode": "consult",
+            "question": "Consider the following AR(1) model with the disturbances having zero mean and unit variance: yt = 0.2 + 0.4yt-1 + ut. The (unconditional) mean of y will be given by:",
+            "answer": "D) 0.33",
+            "correct_answer": "D) 0.33",
+            "score": 1,
+            "time_taken": 11.104882001876831
+        },
+        {
+            "timestamp": "2023-05-10 14:24:29",
+            "mode": "consult",
+            "question": "As of 2017, how many of the world's 1-year-old children today have been vaccinated against some disease?",
+            "answer": "A) 80%",
+            "correct_answer": "A) 80%",
+            "score": 1,
+            "time_taken": 14.602031946182251
+        },
+        {
+            "timestamp": "2023-05-10 14:24:38",
+            "mode": "consult",
+            "question": "A total of 30 players will play basketball at a park. There will be exactly 5 players on each team. Which statement correctly explains how to find the number of teams needed?",
+            "answer": "B",
+            "correct_answer": "B) Divide 30 by 5 to find 6 teams",
+            "score": 1,
+            "time_taken": 9.698452234268188
+        },
+        {
+            "timestamp": "2023-05-10 14:24:58",
+            "mode": "consult",
+            "question": "All other things being equal, which of the following persons is more likely to show osteoporosis?",
+            "answer": "C) An older Asian American woman.",
+            "correct_answer": "C) An older Asian American woman",
+            "score": 1,
+            "time_taken": 19.22459626197815
+        },
+        {
+            "timestamp": "2023-05-10 14:25:05",
+            "mode": "consult",
+            "question": "Why isn't there a planet where the asteroid belt is located?",
+            "answer": "B",
+            "correct_answer": "D) Resonance with Jupiter prevented material from collecting together to form a planet",
+            "score": 0,
+            "time_taken": 6.9623682498931885
+        },
+        {
+            "timestamp": "2023-05-10 14:25:08",
+            "mode": "consult",
+            "question": "A point charge, Q = +1 mC, is fixed at the origin. How much work is required to move a charge, Q = +8 \u00b5C, from the point (0, 4 meters) to the point (3 meters, 0)?",
+            "answer": "B",
+            "correct_answer": "B) 6.0 J",
+            "score": 1,
+            "time_taken": 3.0281996726989746
+        },
+        {
+            "timestamp": "2023-05-10 14:25:11",
+            "mode": "consult",
+            "question": "Joe was in charge of lights for a dance. The red light blinks every two seconds, the yellow light every three seconds, and the blue light every five seconds. If we include the very beginning and very end of the dance, how many times during a seven minute dance will all the lights come on at the same time? (Assume that all three lights blink simultaneously at the very beginning of the dance.)",
+            "answer": "B",
+            "correct_answer": "B) 15",
+            "score": 1,
+            "time_taken": 3.495081663131714
+        },
+        {
+            "timestamp": "2023-05-10 14:25:25",
+            "mode": "consult",
+            "question": "From the solubility rules, which of the following is true?",
+            "answer": "D",
+            "correct_answer": "D) All ammonium-containing compounds are soluble",
+            "score": 1,
+            "time_taken": 14.116026639938354
+        },
+        {
+            "timestamp": "2023-05-10 14:25:50",
+            "mode": "consult",
+            "question": "What is the embryological origin of the hyoid bone?",
+            "answer": "C) The second pharyngeal arch.",
+            "correct_answer": "D) The second and third pharyngeal arches",
+            "score": 0,
+            "time_taken": 24.333202123641968
+        },
+        {
+            "timestamp": "2023-05-10 14:26:14",
+            "mode": "consult",
+            "question": "The technique that is most likely to produce an immediate improvement in the behavior of a child who hits others and rips up schoolbooks is",
+            "answer": "A",
+            "correct_answer": "A) a combination of reinforcement for appropriate behavior and mild punishment for inappropriate behavior",
+            "score": 1,
+            "time_taken": 24.57904028892517
+        },
+        {
+            "timestamp": "2023-05-10 14:26:34",
+            "mode": "consult",
+            "question": "Why did Congress oppose Wilson's proposal for the League of Nations?",
+            "answer": "C",
+            "correct_answer": "C) It feared the League would commit the US to an international alliance",
+            "score": 1,
+            "time_taken": 19.60590124130249
+        },
+        {
+            "timestamp": "2023-05-10 14:26:52",
+            "mode": "consult",
+            "question": "Homologous structures are often cited as evidence for the process of natural selection. All of the following are examples of homologous structures EXCEPT:",
+            "answer": "D",
+            "correct_answer": "D) the forelegs of an insect and the forelimbs of a dog",
+            "score": 1,
+            "time_taken": 18.39387011528015
+        },
+        {
+            "timestamp": "2023-05-10 14:27:05",
+            "mode": "consult",
+            "question": "Morning sickness is typically a problem:",
+            "answer": "A) during the first trimester.",
+            "correct_answer": "A) during the first trimester",
+            "score": 1,
+            "time_taken": 12.493439197540283
+        },
+        {
+            "timestamp": "2023-05-10 14:27:24",
+            "mode": "consult",
+            "question": "The single group within society that is most vulnerable to reference group influence is:",
+            "answer": "Answer: D",
+            "correct_answer": "D) Children, who base most of their buying decisions on outside influences.",
+            "score": 0,
+            "time_taken": 19.19697141647339
+        },
+        {
+            "timestamp": "2023-05-10 14:27:53",
+            "mode": "consult",
+            "question": "One end of a Nichrome wire of length 2L and cross-sectional area A is attached to an end of another Nichrome wire of length L and cross- sectional area 2A. If the free end of the longer wire is at an electric potential of 8.0 volts, and the free end of the shorter wire is at an electric potential of 1.0 volt, the potential at the junction of the two wires is most nearly equal to",
+            "answer": "B) 3.3 V",
+            "correct_answer": "A) 2.4 V",
+            "score": 0,
+            "time_taken": 29.249688625335693
+        },
+        {
+            "timestamp": "2023-05-10 14:28:00",
+            "mode": "consult",
+            "question": "If each of the following meals provides the same number of calories, which meal requires the most land to produce the food?",
+            "answer": "D) Lentil soup and brown bread.",
+            "correct_answer": "B) Steak and a baked potato",
+            "score": 0,
+            "time_taken": 7.260340690612793
+        },
+        {
+            "timestamp": "2023-05-10 14:28:22",
+            "mode": "consult",
+            "question": "Find all c in Z3 such that Z3[x]/(x^2 + c) is a field",
+            "answer": "The best answer is (C) 2, provided by the Mathematician and the Algebra Expert. Both explanations are clear and complete, and they use different but valid strategies to arrive at the same answer. The Field Theory Specialist's answer is also correct, but it is less efficient and requires more knowledge about irreducibility in finite fields. Therefore, option (C) 2 is the most straightforward and reliable choice.",
+            "correct_answer": "B) 1",
+            "score": 0,
+            "time_taken": 21.763320446014404
+        },
+        {
+            "timestamp": "2023-05-10 14:28:39",
+            "mode": "consult",
+            "question": "Which of the following conditions does not show multifactorial inheritance?",
+            "answer": "D",
+            "correct_answer": "D) Marfan syndrome",
+            "score": 1,
+            "time_taken": 17.203640937805176
+        },
+        {
+            "timestamp": "2023-05-10 14:29:11",
+            "mode": "consult",
+            "question": "The Chemical Weapons Convention (CWC) prohibited the possession or deployment of chemical weapons; however it failed to implement stipulations that would require signatories to declare their existing stocks of chemical weapons, to identify facilities that were once involved in chemical production, or to announce when their existing stocks would be destroyed.",
+            "answer": "A",
+            "correct_answer": "D) While the CWC has been ratified by the majority of international society, some nations with a large chemical capability at their disposal have yet to enter into the treaty. However, to some analysts the destructive military potential would be limited, having a moderate effect on a well-equipped army in conventional warfare. Chemical arsenal essentially falls under the category of the \"poor mans\" weaponry, being simplistic and inexpensive whilst having limited military utility. However, the concern remains of the prospective impact a terrorist chemical attack could have on civilian populations.",
+            "score": 0,
+            "time_taken": 32.094995737075806
+        }
+    ]
+}
