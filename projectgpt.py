@@ -1,11 +1,84 @@
 import json
+import openai
+import time
 from dotenv import load_dotenv
 from typing import List, Dict
-from utils import create_chat_completion
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, TimeoutError
 
 load_dotenv(verbose=True, override=True)
+model = "gpt-4"
 
+def handle_rate_limit_errors(func, timeout=None, *args, **kwargs):
+    """
+    Handle rate-limiting errors and implement a smart retry algorithm with a timeout.
+
+    Args:
+        func (function): The function that may raise a rate-limiting error.
+        timeout (float, optional): The maximum time to wait for completion in seconds.
+        *args: Positional arguments to pass to the function.
+        **kwargs: Keyword arguments to pass to the function.
+
+    Returns:
+        The result of the function call.
+    """
+    max_retries = 5
+    backoff_factor = 2
+    delay = 1
+
+    for attempt in range(max_retries):
+        try:
+            with ThreadPoolExecutor(max_workers=1) as executor:
+                future = executor.submit(func, *args, **kwargs)
+                return future.result(timeout=timeout)
+
+        except openai.error.RateLimitError as e:
+            if attempt >= max_retries - 1:
+                raise e
+            wait_time = delay * (backoff_factor ** attempt)
+            print(f"Rate limit exceeded. Retrying in {wait_time} seconds...")
+            time.sleep(wait_time)
+        except TimeoutError:
+            if attempt < max_retries - 1:
+                wait_time = delay * (backoff_factor ** attempt)
+                print(f"Timeout encountered. Retrying in {wait_time} seconds...")
+                time.sleep(wait_time)
+            else:
+                raise
+
+def create_chat_completion(system_prompt: str, user_prompt: str) -> openai.ChatCompletion:
+    """
+    Create a chat completion using OpenAI's API.
+
+    Args:
+        system_prompt (str): The system role prompt.
+        user_prompt (str): The user role prompt.
+
+    Returns:
+        openai.ChatCompletion: A ChatCompletion object containing the response.
+    """
+    return openai.ChatCompletion.create(
+        model=model,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt},
+        ],
+        max_tokens=1000,
+        n=1,
+        stop=None,
+        temperature=0.7,
+    )
+
+def answer_question(user_question: str, mode: str) -> str:
+    """
+    Answer the user's question.
+    """
+    if mode == "smes":
+        selected_smes = classify_question(user_question)
+        answers = consult_smes(user_question, selected_smes)
+        best_answer = resolve_best_answer(user_question, answers)
+    elif mode == "raw":
+        best_answer = handle_rate_limit_errors(create_chat_completion, 60, "", user_question).choices[0].message["content"]
+    return best_answer
 
 def classify_question(question: str) -> List[str]:
     """
@@ -21,7 +94,7 @@ def classify_question(question: str) -> List[str]:
     user_prompt = "Classify the following question and select the top 3 most relevant Subject Matter Experts. "
     user_prompt += f"Question: {question}."
     user_prompt += 'Respond with the top 3 SMEs in the following JSON template. Do NOT print anything else! {"smes": ["sme", "sme", "sme"]}: '
-    response = create_chat_completion(system_prompt, user_prompt)
+    response = handle_rate_limit_errors(create_chat_completion, 60, system_prompt, user_prompt)
     # Parse the JSON response into a list
     response = json.loads(response.choices[0].message["content"])
     # Return the top 3 most relevant Subject Matter Experts
@@ -41,7 +114,7 @@ def consult_sme(sme: str, question: str) -> Dict[str, str]:
     """
     system_prompt = f"You are a {sme}."
     user_prompt = f"How would you answer this question: {question}? Let's work this out in a step by step way to be sure we have the right answer."
-    response = create_chat_completion(system_prompt, user_prompt)
+    response = handle_rate_limit_errors(create_chat_completion, 60, system_prompt, user_prompt)
     return {sme: response.choices[0].message["content"].strip()}
 
 
@@ -77,5 +150,5 @@ def resolve_best_answer(question, answers):
     for i, (sme, answer) in enumerate(answers.items()):
         user_prompt += f"{i + 1}. {sme}: {answer}\n"
     user_prompt += f"\nThe best answer and reason why is: "
-    response = create_chat_completion(system_prompt, user_prompt)
+    response = handle_rate_limit_errors(create_chat_completion, 60, system_prompt, user_prompt)
     return response.choices[0].message["content"].strip()
