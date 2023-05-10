@@ -6,7 +6,7 @@ from typing import List, Dict
 from concurrent.futures import ThreadPoolExecutor, TimeoutError
 
 load_dotenv(verbose=True, override=True)
-model = "gpt-4"
+model = "gpt-4" # One of 'gpt-4', 'gpt-3.5-turbo'
 
 def handle_rate_limit_errors(func, timeout=None, *args, **kwargs):
     """
@@ -72,12 +72,12 @@ def answer_question(user_question: str, mode: str) -> str:
     """
     Answer the user's question.
     """
-    if mode == "smes":
+    if mode == "direct":
+        best_answer = handle_rate_limit_errors(create_chat_completion, 60, "", user_question).choices[0].message["content"]
+    else:
         selected_smes = classify_question(user_question)
         answers = consult_smes(user_question, selected_smes)
         best_answer = resolve_best_answer(user_question, answers)
-    elif mode == "raw":
-        best_answer = handle_rate_limit_errors(create_chat_completion, 60, "", user_question).choices[0].message["content"]
     return best_answer
 
 def classify_question(question: str) -> List[str]:

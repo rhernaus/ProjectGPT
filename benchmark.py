@@ -5,7 +5,7 @@ import os
 import time
 import random
 from dotenv import load_dotenv
-
+from datetime import datetime
 
 def load_tasks():
     with open("tasks.json", "r", encoding="utf-8") as file:
@@ -30,10 +30,13 @@ def main():
     load_dotenv(verbose=True, override=True)
     openai.api_key = os.getenv("OPENAI_API_KEY")
 
+    mode = "direct"
+
+    total_start_time = time.time()
     tasks = load_tasks()
     random.shuffle(tasks)
 
-    correct_raw_answers = correct_smes_answers = total_answers = 0
+    correct_answers = total_answers = 0
     results = []
 
     for task in tasks:
@@ -41,43 +44,47 @@ def main():
         correct_answer = task["options"][task["correct_option_index"]]
         print(f"Question: {question}\nCorrect Answer: {correct_answer}")
 
-        raw_answer, time_taken_raw = get_answer(question, "raw")
-        print(f"Raw Answer: {raw_answer}")
-        # smes_answer, time_taken_smes = get_answer(question, "smes")
-        # print(f"SMEs Answer: {smes_answer}")
+        answer, time_taken = get_answer(question, mode)
+        print(f"Answer: {answer}")
 
-        raw_score = int(correct_answer in raw_answer)
-        # smes_score = int(correct_answer in smes_answer)
+        # Calculate the score based on the first character of the answer
+        score = int(answer[0] == correct_answer[0])
 
-        correct_raw_answers += raw_score
-        # correct_smes_answers += smes_score
+        correct_answers += score
         total_answers += 1
 
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
         results.append({
+            "timestamp": timestamp,
+            "mode": mode,
             "question": task["question"],
-            "raw_answer": raw_answer,
-            # "smes_answer": smes_answer,
+            "answer": answer,
             "correct_answer": correct_answer,
-            "raw_score": raw_score,
-            # "smes_score": smes_score,
-            "time_taken_raw": time_taken_raw,
-            # "time_taken_smes": time_taken_smes
+            "score": score,
+            "time_taken": time_taken,
         })
 
         print("\n")
 
-    raw_performance = correct_raw_answers / total_answers * 100
-    print(f"Raw Performance: {raw_performance:.2f}%")
-    # smes_performance = correct_smes_answers / total_answers * 100
-    # print(f"SMEs Performance: {smes_performance:.2f}%")
+    total_time_taken = time.time() - total_start_time
+    print(f"Total time taken: {total_time_taken:.2f}s")
 
+    performance = correct_answers / total_answers * 100
+    print(f"Performance: {performance:.2f}%")
+
+    # Save the final results
     performance_data = {
-        "raw_performance": raw_performance,
-        # "smes_performance": smes_performance,
+        "performance": performance,
+        "time_taken": total_time_taken,
         "results": results
     }
 
-    with open("performance.json", "w") as file:
+    # Create a filename with the current timestamp
+    current_time = datetime.now().strftime("%Y%m%d%H%M")
+    final_filename = f"performance_final_{current_time}.json"
+
+    with open(final_filename, "w") as file:
         json.dump(performance_data, file, indent=4)
 
 if __name__ == "__main__":
