@@ -13,7 +13,7 @@ This application uses OpenAI GPT models, state-of-the-art language models by Ope
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Examples](#examples)
+- [Benchmark](#Benchmark)
 - [Credits](#credits)
 
 ## Features
