@@ -74,7 +74,7 @@ def answer_question(user_question: str, mode: str) -> str:
     """
     if mode == "direct":
         best_answer = handle_rate_limit_errors(create_chat_completion, 60, "", user_question).choices[0].message["content"]
-    else:
+    elif mode == "consult":
         selected_smes = classify_question(user_question)
         answers = consult_smes(user_question, selected_smes)
         best_answer = resolve_best_answer(user_question, answers)

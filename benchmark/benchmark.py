@@ -1,3 +1,7 @@
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+
 import json
 import projectgpt
 import openai
@@ -30,7 +34,7 @@ def main():
     load_dotenv(verbose=True, override=True)
     openai.api_key = os.getenv("OPENAI_API_KEY")
 
-    mode = "direct"
+    mode = "direct" # "direct" or "consult"
 
     total_start_time = time.time()
     tasks = load_tasks()
