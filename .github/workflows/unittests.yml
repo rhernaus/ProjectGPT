@@ -24,6 +24,4 @@ jobs:
 
       - name: Run tests
         run: |
-          python -m unittest test_app.py
-          python -m unittest test_benchmark.py
-          python -m unittest test_projectgpt.py
+          python -m unittest discover -s tests
