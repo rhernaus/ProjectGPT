@@ -1,6 +1,7 @@
 import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent))
+import concurrent.futures
 from utils import handle_rate_limit_errors, create_chat_completion
 from typing import List, Dict
 
@@ -13,40 +14,29 @@ def answer_question(user_question: str) -> List[str]:
     messages = chain_of_thought(user_question, messages)
     messages = reflexion(messages)
     messages = resolver(messages)
-
-    # Get the last line of the last message
-    final_answer = messages[-1]["content"].split("\n")[-1]
-    # Add the final answer to the messages
-    messages.append({"role": "final", "content": final_answer})
-
     return messages
 
 
 def chain_of_thought(question: str, messages: List[Dict], temperatures: List[float] = None) -> List[str]:
-    """
-    An automatically discovered chain-of-though (CoT) prompt generalizes to novel models and datasets.
-
-    Prompt: Question: <question>. Answer: Let's work this out in a step by step way to be sure we have the right answer.
-
-    Args:
-        question (str): The question to classify.
-        temperatures (List[float]): A list of temperatures to use.
-
-    Returns:
-        list (List[str]): A list containing the answers.
-    """
     if temperatures is None:
         temperatures = [0.0, 0.5, 1.0]
 
     user_prompt = f"Question: {question}. Answer: Let's work this out in a step by step way to be sure we have the right answer."
     messages.append({"role": "user", "content": user_prompt})
 
-    answers = []
-    for temperature in temperatures:
+    # define the function to be run in parallel
+    def generate_response(temperature):
         response = handle_rate_limit_errors(create_chat_completion, 300, messages, temperature)
-        answers.append(response.choices[0].message.to_dict())
-        # Add Option index to the  answer
-        answers[-1]["content"] = f"Reponse Option {len(answers)}:\n{answers[-1]['content']}"
+        answer = response.choices[0].message.to_dict()
+        # Add Option index to the answer
+        answer["content"] = f"Reponse Option {temperature}:\n{answer['content']}"
+        return answer
+
+    answers = []
+    with concurrent.futures.ThreadPoolExecutor(len(temperatures)) as executor:
+        futures = {executor.submit(generate_response, temp) for temp in temperatures}
+        for future in concurrent.futures.as_completed(futures):
+            answers.append(future.result())
 
     # Add answers to messages
     messages.extend(answers)
@@ -102,7 +92,6 @@ def resolver(messages: List[Dict]) -> List[str]:
     response = handle_rate_limit_errors(create_chat_completion, 300, messages)
     messages.append(response.choices[0].message.to_dict())
     return messages
-
 
 def main():
     user_question = input("Question: ")

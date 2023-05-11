@@ -3,6 +3,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 import json
+import concurrent.futures
 from projectgpt import projectgpt
 from smartgpt import smartgpt
 from direct import direct
@@ -60,18 +61,7 @@ def main():
     while utils.model not in ["gpt-4", "gpt-3.5-turbo"]:
         utils.model = input("Model (gpt-4, gpt-3.5-turbo): ")
 
-    # Load tasks and shuffle them
-    total_start_time = time.time()
-    tasks = load_tasks()
-    random.shuffle(tasks)
-    # If the number of questions is specified, only use that many questions
-    if num_questions is not None:
-        tasks = tasks[:num_questions]
-
-    correct_answers = total_answers = 0
-    results = []
-
-    for task in tasks:
+    def process_task(task):
         question = format_question(task)
         correct_answer = task["options"][task["correct_option_index"]]
         print(f"Question: {question}\nCorrect Answer: {correct_answer}")
@@ -82,22 +72,44 @@ def main():
         # Calculate the score based on the first character of the answer
         score = int(answer[0] == correct_answer[0])
 
-        correct_answers += score
-        total_answers += 1
-
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-        results.append({
+        return {
             "timestamp": timestamp,
             "method": method,
+            "model": utils.model,
             "question": task["question"],
             "answer": answer,
             "correct_answer": correct_answer,
             "score": score,
             "time_taken": time_taken,
-        })
+        }
 
-        print("\n")
+
+    # Load tasks and shuffle them
+    total_start_time = time.time()
+    tasks = load_tasks()
+    random.shuffle(tasks)
+
+    # If the number of questions is specified, only use that many questions
+    if num_questions is not None:
+        tasks = tasks[:num_questions]
+
+    correct_answers = total_answers = 0
+    results = []
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+        future_to_task = {executor.submit(process_task, task): task for task in tasks}
+        for future in concurrent.futures.as_completed(future_to_task):
+            task = future_to_task[future]
+            try:
+                result = future.result()
+            except Exception as exc:
+                print('%r generated an exception: %s' % (task, exc))
+            else:
+                results.append(result)
+                correct_answers += result["score"]
+                total_answers += 1
 
     total_time_taken = time.time() - total_start_time
     print(f"Total time taken: {total_time_taken:.2f}s")

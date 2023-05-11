@@ -1,6 +1,7 @@
 import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent))
+import concurrent.futures
 import json
 from utils import handle_rate_limit_errors, create_chat_completion
 from typing import List
@@ -62,15 +63,23 @@ def consult_smes(selected_smes: List[str], question: str, messages: List[str]) -
     Returns:
         messages (list): The list of messages with the responses from the SMEs appended.
     """
-    answers = []
-    for sme in selected_smes:
+    # define the function to be run in parallel
+    def consult_sme(sme):
         prompt = (
             f"You are a {sme}. How would you answer this question:\n{question}\n"
             "Let's work this out in a step by step way to be sure we have the right answer."
         )
-        answers.append({"role": "user", "content": prompt})
+        answer = {"role": "user", "content": prompt}
         response = handle_rate_limit_errors(create_chat_completion, 300, [{"role": "user", "content": prompt}])
-        answers.append(response.choices[0].message.to_dict())
+        answer_response = response.choices[0].message.to_dict()
+        return answer, answer_response
+
+    answers = []
+    with concurrent.futures.ThreadPoolExecutor(len(selected_smes)) as executor:
+        futures = {executor.submit(consult_sme, sme) for sme in selected_smes}
+        for future in concurrent.futures.as_completed(futures):
+            answer, answer_response = future.result()
+            answers.extend([answer, answer_response])
 
     # Append the answers to the messages list
     messages.extend(answers)

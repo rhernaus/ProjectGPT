@@ -74,6 +74,7 @@ The following table shows the performance on the 57 tasks from the [MEASURING MA
 | gpt-4                    | Zero-shot      | 61.4%       | 251      | [file](benchmark/performance_final_202305101117_gpt4_direct.json) |
 | gpt-3.5-turbo            | Consult 3 SMEs | 50.9%       | 1127     | [file](benchmark/performance_final_202305101429_gpt35turbo_consult.json) |
 | gpt-4                    | Consult 3 SMEs | 73.7%       | 5429     | [file](benchmark/performance_final_202305101607_gpt4_consult.json) |
+| gpt-4                    | SmartGPT       | 75.4%       | 2494     | [file](benchmark/performance_final_202305111445_gpt4_smart.json) |
 
 ## Credits
 
