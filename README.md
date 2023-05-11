@@ -5,7 +5,7 @@
 
 This application uses OpenAI GPT models, state-of-the-art language models by OpenAI, to simulate a project manager who can provide expert answers to your questions across various fields.
 
-![Architecture](architecture.png)
+![ProjectGPT Architecture](img/projectgpt_architecture.png)
 
 ## Table of Contents
 
@@ -70,11 +70,11 @@ The following table shows the performance on the 57 tasks from the [MEASURING MA
 
 | Model                    | Mode           | Performance | Time (s) | Results |
 |--------------------------|----------------|-------------|----------|---------|
-| gpt-3.5-turbo            | Zero-shot      | 50.9%       | 153      | [file](benchmark/performance_final_202305101112_gpt35turbo_direct.json) |
-| gpt-4                    | Zero-shot      | 61.4%       | 251      | [file](benchmark/performance_final_202305101117_gpt4_direct.json) |
-| gpt-3.5-turbo            | Consult 3 SMEs | 50.9%       | 1127     | [file](benchmark/performance_final_202305101429_gpt35turbo_consult.json) |
-| gpt-4                    | Consult 3 SMEs | 73.7%       | 5429     | [file](benchmark/performance_final_202305101607_gpt4_consult.json) |
-| gpt-4                    | SmartGPT       | 75.4%       | 2494     | [file](benchmark/performance_final_202305111445_gpt4_smart.json) |
+| gpt-3.5-turbo            | Zero-shot      | 50.9%       | 153      | [file](results/performance_final_202305101112_gpt35turbo_direct.json) |
+| gpt-4                    | Zero-shot      | 61.4%       | 251      | [file](results/performance_final_202305101117_gpt4_direct.json) |
+| gpt-3.5-turbo            | Consult 3 SMEs | 50.9%       | 1127     | [file](results/performance_final_202305101429_gpt35turbo_consult.json) |
+| gpt-4                    | Consult 3 SMEs | 73.7%       | 5429     | [file](results/performance_final_202305101607_gpt4_consult.json) |
+| gpt-4                    | SmartGPT       | 75.4%       | 2494     | [file](results/performance_final_202305111445_gpt4_smart.json) |
 
 ## Credits
 

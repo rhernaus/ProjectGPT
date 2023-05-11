@@ -1,12 +1,9 @@
-import sys
-from pathlib import Path
-sys.path.append(str(Path(__file__).resolve().parent.parent))
-
 import json
 import concurrent.futures
-from projectgpt import projectgpt
-from smartgpt import smartgpt
-from direct import direct
+import projectgpt
+import smartgpt
+import direct
+import fewshot
 import utils
 import openai
 import os
@@ -36,6 +33,8 @@ def get_answer(question, method):
         answer = projectgpt.answer_question(question)[-1]["content"]
     elif method == "smartgpt":
         answer = smartgpt.answer_question(question)[-1]["content"]
+    elif method == "fewshot":
+        answer = fewshot.answer_question(question)[-1]["content"]
     time_taken = time.time() - start_time
     return answer, time_taken
 
@@ -46,8 +45,8 @@ def main():
 
     # Get method from user
     method = None
-    while method not in ["direct", "projectgpt", "smartgpt"]:
-        method = input("Method (direct, projectgpt, smartgpt): ")
+    while method not in ["direct", "projectgpt", "smartgpt", "fewshot"]:
+        method = input("Method (direct, projectgpt, smartgpt, fewshot): ")
 
     # Get the number of questions from user. If no answer is given or the answer is invalid, use all questions
     num_questions = input("Number of questions (leave blank for all): ")

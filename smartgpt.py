@@ -1,6 +1,3 @@
-import sys
-from pathlib import Path
-sys.path.append(str(Path(__file__).resolve().parent.parent))
 import concurrent.futures
 from utils import handle_rate_limit_errors, create_chat_completion
 from typing import List, Dict
