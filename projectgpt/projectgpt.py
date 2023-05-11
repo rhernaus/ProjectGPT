@@ -1,86 +1,34 @@
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent.parent))
 import json
-import openai
-import time
-from dotenv import load_dotenv
-from typing import List, Dict
-from concurrent.futures import ThreadPoolExecutor, TimeoutError
+from utils import handle_rate_limit_errors, create_chat_completion
+from typing import List
 
-load_dotenv(verbose=True, override=True)
-model = "gpt-4" # One of 'gpt-4', 'gpt-3.5-turbo'
 
-def handle_rate_limit_errors(func, timeout=None, *args, **kwargs):
-    """
-    Handle rate-limiting errors and implement a smart retry algorithm with a timeout.
-
-    Args:
-        func (function): The function that may raise a rate-limiting error.
-        timeout (float, optional): The maximum time to wait for completion in seconds.
-        *args: Positional arguments to pass to the function.
-        **kwargs: Keyword arguments to pass to the function.
-
-    Returns:
-        The result of the function call.
-    """
-    max_retries = 5
-    backoff_factor = 2
-    delay = 5
-
-    for attempt in range(max_retries):
-        try:
-            with ThreadPoolExecutor(max_workers=1) as executor:
-                future = executor.submit(func, *args, **kwargs)
-                return future.result(timeout=timeout)
-
-        except openai.error.RateLimitError as e:
-            if attempt >= max_retries - 1:
-                raise e
-            wait_time = delay * (backoff_factor ** attempt)
-            print(f"Rate limit exceeded. Retrying in {wait_time} seconds...")
-            time.sleep(wait_time)
-        except TimeoutError:
-            if attempt < max_retries - 1:
-                wait_time = delay * (backoff_factor ** attempt)
-                print(f"Timeout encountered. Retrying in {wait_time} seconds...")
-                time.sleep(wait_time)
-            else:
-                raise
-
-def create_chat_completion(system_prompt: str, user_prompt: str) -> openai.ChatCompletion:
-    """
-    Create a chat completion using OpenAI's API.
-
-    Args:
-        system_prompt (str): The system role prompt.
-        user_prompt (str): The user role prompt.
-
-    Returns:
-        openai.ChatCompletion: A ChatCompletion object containing the response.
-    """
-    return openai.ChatCompletion.create(
-        model=model,
-        messages=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_prompt},
-        ],
-        max_tokens=1000,
-        n=1,
-        stop=None,
-        temperature=0.7,
-    )
-
-def answer_question(user_question: str, mode: str) -> str:
+def answer_question(user_question: str) -> str:
     """
     Answer the user's question.
     """
-    if mode == "direct":
-        best_answer = handle_rate_limit_errors(create_chat_completion, 60, "", user_question).choices[0].message["content"]
-    elif mode == "consult":
-        selected_smes = classify_question(user_question)
-        answers = consult_smes(user_question, selected_smes)
-        best_answer = resolve_best_answer(user_question, answers)
-    return best_answer
+    messages = []
+    # Classify the question and select the top 3 most relevant Subject Matter Experts
+    messages = classify_question(user_question, messages)
+    # Parse last message content as JSON to extract seleted_smes
+    try:
+        selected_smes = json.loads(messages[-1]["content"])["smes"]
+    except json.decoder.JSONDecodeError as e:
+        print("Error: Invalid JSON response. Error: ", e)
+        selected_smes = ["sme"]
 
-def classify_question(question: str) -> List[str]:
+    # Consult the selected Subject Matter Experts and gather their answers
+    messages = consult_smes(selected_smes, user_question, messages)
+
+    # Resolve the best answer from the provided options given by Subject Matter Experts
+    messages = resolve_best_answer(messages)
+    return messages
+
+
+def classify_question(question: str, messages: List[str]) -> List[str]:
     """
     Classify the given question and select the top 3 most relevant Subject Matter Experts.
 
@@ -90,68 +38,69 @@ def classify_question(question: str) -> List[str]:
     Returns:
         list: A list containing the top 3 most relevant Subject Matter Experts.
     """
-    system_prompt = "You are a Project Manager."
-    user_prompt = "Classify the following question and select the top 3 most relevant Subject Matter Experts. "
-    user_prompt += f"Question: {question}."
-    user_prompt += 'You must respond with the top 3 SMEs in the following JSON template. Do NOT print anything else! {"smes": ["sme", "sme", "sme"]}: '
-    response = handle_rate_limit_errors(create_chat_completion, 300, system_prompt, user_prompt)
-    # Parse the JSON response into a list
-    try:
-        response = json.loads(response.choices[0].message["content"])
-        return response["smes"][:3]
-    except json.decoder.JSONDecodeError as e:
-        print("Error: Invalid JSON response. Error: ", e)
-        return ["sme"]
+    prompt = (
+        "You are a Project Manager. Classify the following question and select the top 3 most relevant Subject Matter Experts. "
+        f"Question: {question}."
+        'You must respond with the top 3 SMEs in the following JSON template. Do NOT print anything else! {"smes": ["sme", "sme", "sme"]}: '
+    )
+    messages.append(
+        {"role": "user", "content": prompt}
+    )
+    response = handle_rate_limit_errors(create_chat_completion, 300, messages)
+    messages.append(response.choices[0].message.to_dict())
+    return messages
 
 
-def consult_sme(sme: str, question: str) -> Dict[str, str]:
-    """
-    Consult a single Subject Matter Expert and gather their answer.
-
-    Args:
-        sme (str): The Subject Matter Expert to consult.
-        question (str): The question to consult the SME about.
-
-    Returns:
-        dict: A dictionary containing the response from the SME.
-    """
-    system_prompt = f"You are a {sme}."
-    user_prompt = f"How would you answer this question: {question}? Let's work this out in a step by step way to be sure we have the right answer. Respond with your reasoning and include your answer at the end."
-    response = handle_rate_limit_errors(create_chat_completion, 300, system_prompt, user_prompt)
-    return {sme: response.choices[0].message["content"].strip()}
-
-
-def consult_smes(question: str, selected_smes: List[str]) -> Dict[str, str]:
+def consult_smes(selected_smes: List[str], question: str, messages: List[str]) -> List[str]:
     """
     Consult the selected Subject Matter Experts and gather their answers.
 
     Args:
-        question (str): The question to consult the SMEs about.
         selected_smes (list): The list of selected Subject Matter Experts.
+        messages (list): The list of messages to append to.
 
     Returns:
-        dict: A dictionary containing the responses from the SMEs.
+        messages (list): The list of messages with the responses from the SMEs appended.
     """
-    with ThreadPoolExecutor() as executor:
-        responses = list(executor.map(lambda sme: consult_sme(sme, question), selected_smes))
-    return {key: value for response in responses for key, value in response.items()}
+    answers = []
+    for sme in selected_smes:
+        prompt = (
+            f"You are a {sme}. How would you answer this question:\n{question}\n"
+            "Let's work this out in a step by step way to be sure we have the right answer."
+        )
+        answers.append({"role": "user", "content": prompt})
+        response = handle_rate_limit_errors(create_chat_completion, 300, [{"role": "user", "content": prompt}])
+        answers.append(response.choices[0].message.to_dict())
+
+    # Append the answers to the messages list
+    messages.extend(answers)
+    return messages
 
 
-def resolve_best_answer(question, answers):
+def resolve_best_answer(messages):
     """
     Resolve the best answer from the provided options given by Subject Matter Experts.
     Args:
-        question (str): The original question.
-        answers (dict): A dictionary containing the answers provided by SMEs.
+        messages (list): The list of messages to append to.
 
     Returns:
-        str: The best answer.
+        messages (list): The list of messages with the best answer appended.
     """
-    system_prompt = "You are a resolver tasked with finding which of the answer options the Subject Matter Experts have provided is the best answer."
-    user_prompt = "Let's work this out in a step by step way to be sure we have the right answer.\n\n"
-    user_prompt += f"Given the question '{question}' and the following answers:\n\n"
-    for i, (sme, answer) in enumerate(answers.items()):
-        user_prompt += f"{i + 1}. {sme}: {answer}\n"
-    user_prompt += f"\nPlease select only one correct answer without providing any explanation. To submit your response, simply print the chosen option. Answer: "
-    response = handle_rate_limit_errors(create_chat_completion, 300, system_prompt, user_prompt)
-    return response.choices[0].message["content"].strip()
+    prompt = (
+        "You are a resolver tasked with finding which of the answer options the Subject Matter Experts have provided is the best answer. "
+        "Let's work this out in a step by step way to be sure we have the right answer. "
+        "Print your final answer on the last line."
+    )
+    messages.append({"role": "user", "content": prompt})
+    response = handle_rate_limit_errors(create_chat_completion, 300, messages)
+    messages.append(response.choices[0].message.to_dict())
+    return messages
+
+
+def main():
+    user_question = input("Question: ")
+    messages = answer_question(user_question)
+    print(messages)
+
+if __name__ == "__main__":
+    main()
