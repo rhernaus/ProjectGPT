@@ -11,7 +11,8 @@
                 "C) 2",
                 "D) 3"
             ],
-            "correct_option_index": 1
+            "correct_option_index": 1,
+            "id": 1
         },
         {
             "subject": "Anatomy",
@@ -22,7 +23,8 @@
                 "C) The second pharyngeal arch",
                 "D) The second and third pharyngeal arches"
             ],
-            "correct_option_index": 3
+            "correct_option_index": 3,
+            "id": 2
         },
         {
             "subject": "Astronomy",
@@ -33,7 +35,8 @@
                 "C) There was too much rocky material to form a terrestrial planet but not enough gaseous material to form a jovian planet",
                 "D) Resonance with Jupiter prevented material from collecting together to form a planet"
             ],
-            "correct_option_index": 3
+            "correct_option_index": 3,
+            "id": 3
         },
         {
             "subject": "Business Ethics",
@@ -44,7 +47,8 @@
                 "C) Indirect action, Violent direct action, Non-violent direct-action Boycott.",
                 "D) Non-violent direct action, Instrumental action, Indirect action, Information campaign"
             ],
-            "correct_option_index": 2
+            "correct_option_index": 2,
+            "id": 4
         },
         {
             "subject": "Clinical Knowledge",
@@ -55,7 +59,8 @@
                 "C) 2",
                 "D) 1"
             ],
-            "correct_option_index": 2
+            "correct_option_index": 2,
+            "id": 5
         },
         {
             "subject": "College Biology",
@@ -66,7 +71,8 @@
                 "C) 20/400",
                 "D) 38/400"
             ],
-            "correct_option_index": 3
+            "correct_option_index": 3,
+            "id": 6
         },
         {
             "subject": "College Chemistry",
@@ -77,7 +83,8 @@
                 "C) All of the lanthanide elements react with aqueous acid to liberate hydrogen",
                 "D) The atomic radii of the lanthanide elements increase across the period from La to Lu"
             ],
-            "correct_option_index": 3
+            "correct_option_index": 3,
+            "id": 7
         },
         {
             "subject": "Computer Science",
@@ -88,7 +95,8 @@
                 "C) 1/25",
                 "D) 2/27"
             ],
-            "correct_option_index": 1
+            "correct_option_index": 1,
+            "id": 8
         },
         {
             "subject": "Mathematics",
@@ -99,7 +107,8 @@
                 "C) III only",
                 "D) II and III only"
             ],
-            "correct_option_index": 1
+            "correct_option_index": 1,
+            "id": 9
         },
         {
             "subject": "Medicine",
@@ -110,7 +119,8 @@
                 "C) All daughters of an affected male will be affected.",
                 "D) There will be equal distribution of males and females affected."
             ],
-            "correct_option_index": 2
+            "correct_option_index": 2,
+            "id": 10
         },
         {
             "subject": "Physics",
@@ -121,7 +131,8 @@
                 "C) 4.5 V",
                 "D) 5.7 V"
             ],
-            "correct_option_index": 0
+            "correct_option_index": 0,
+            "id": 11
         },
         {
             "subject": "Computer Security",
@@ -132,7 +143,8 @@
                 "C) Heartbleed attacks the anti-virus scanner itself",
                 "D) Anti-virus scanners tend to look for viruses and other malicious code, but Heartbleed exploits steal secrets without injecting any code"
             ],
-            "correct_option_index": 3
+            "correct_option_index": 3,
+            "id": 12
         },
         {
             "subject": "Conceptual Physics",
@@ -143,7 +155,8 @@
                 "C) less",
                 "D) either greater or less depending on wind speed"
             ],
-            "correct_option_index": 1
+            "correct_option_index": 1,
+            "id": 13
         },
         {
             "subject": "Econometrics",
@@ -154,18 +167,20 @@
                 "C) 0.5",
                 "D) 0.33"
             ],
-            "correct_option_index": 3
+            "correct_option_index": 3,
+            "id": 14
         },
         {
             "subject": "Electrical Engineering",
-            "question": "A point pole has a strength of 4π x 10-4 weber. The force in newtons on a point pole of 4π x 1.5 x 10-4 weber placed at a distance of 10 cm from it will be:",
+            "question": "A point pole has a strength of 4\u03c0 x 10-4 weber. The force in newtons on a point pole of 4\u03c0 x 1.5 x 10-4 weber placed at a distance of 10 cm from it will be:",
             "options": [
                 "A) 15 N",
                 "B) 20 N",
                 "C) 7.5 N",
                 "D) 3.75 N"
             ],
-            "correct_option_index": 0
+            "correct_option_index": 0,
+            "id": 15
         },
         {
             "subject": "Elementary Mathematics",
@@ -176,18 +191,20 @@
                 "C) Multiply 30 and 5 to find 150 teams",
                 "D) Subtract 5 from 30 to find 25 teams"
             ],
-            "correct_option_index": 1
+            "correct_option_index": 1,
+            "id": 16
         },
         {
             "subject": "Formal Logic",
-            "question": "Determine whether the statements are logically equivalent or contradictory. If neither, determine whether they are consistent or inconsistent: E ⊃ (F · E) and ~ E · F",
+            "question": "Determine whether the statements are logically equivalent or contradictory. If neither, determine whether they are consistent or inconsistent: E \u2283 (F \u00b7 E) and ~ E \u00b7 F",
             "options": [
                 "A) Logically equivalent",
                 "B) Contradictory",
                 "C) Neither logically equivalent nor contradictory, but consistent",
                 "D) Inconsistent"
             ],
-            "correct_option_index": 2
+            "correct_option_index": 2,
+            "id": 17
         },
         {
             "subject": "Global Facts",
@@ -198,7 +215,8 @@
                 "C) 40%",
                 "D) 20%"
             ],
-            "correct_option_index": 0
+            "correct_option_index": 0,
+            "id": 18
         },
         {
             "subject": "High School Biology",
@@ -209,7 +227,8 @@
                 "C) the pectoral fins of a porpoise and the flippers of a seal",
                 "D) the forelegs of an insect and the forelimbs of a dog"
             ],
-            "correct_option_index": 3
+            "correct_option_index": 3,
+            "id": 19
         },
         {
             "subject": "High School Chemistry",
@@ -220,7 +239,8 @@
                 "C) All hydroxides are soluble",
                 "D) All ammonium-containing compounds are soluble"
             ],
-            "correct_option_index": 3
+            "correct_option_index": 3,
+            "id": 20
         },
         {
             "subject": "Computer Science",
@@ -231,7 +251,8 @@
                 "C) Step 3: Repeat step 2 until the value of count is greater than 100. Step 4: Increase the value of position by 1.",
                 "D) Step 3: Repeat step 2 until the value of position is greater than n. Step 4: Increase the value of count by 1."
             ],
-            "correct_option_index": 3
+            "correct_option_index": 3,
+            "id": 21
         },
         {
             "subject": "European History",
@@ -242,7 +263,8 @@
                 "C) establish Calvinism as the one true theology in England",
                 "D) end various forms of corruption plaguing the Church in England"
             ],
-            "correct_option_index": 3
+            "correct_option_index": 3,
+            "id": 22
         },
         {
             "subject": "Geography",
@@ -253,7 +275,8 @@
                 "C) Birth rates increase and population growth rate increases.",
                 "D) Birth rates decrease and population growth rate increases."
             ],
-            "correct_option_index": 1
+            "correct_option_index": 1,
+            "id": 23
         },
         {
             "subject": "Government and Politics",
@@ -264,7 +287,8 @@
                 "C) The negative effects of factionalism can be reduced by a republican government.",
                 "D) Free elections are the people's best defense against factionalism."
             ],
-            "correct_option_index": 2
+            "correct_option_index": 2,
+            "id": 24
         },
         {
             "subject": "Macroeconomics",
@@ -275,7 +299,8 @@
                 "C) An American pop singer performs a sold-out concert in Paris.",
                 "D) A French theatrical production tours dozens of American cities."
             ],
-            "correct_option_index": 2
+            "correct_option_index": 2,
+            "id": 25
         },
         {
             "subject": "Mathematics",
@@ -286,7 +311,8 @@
                 "C) 6",
                 "D) 5"
             ],
-            "correct_option_index": 1
+            "correct_option_index": 1,
+            "id": 26
         },
         {
             "subject": "Microeconomics",
@@ -297,29 +323,32 @@
                 "C) the consumer surplus will increase",
                 "D) the consumer surplus will decrease"
             ],
-            "correct_option_index": 2
+            "correct_option_index": 2,
+            "id": 27
         },
         {
             "subject": "Physics",
-            "question": "A point charge, Q = +1 mC, is fixed at the origin. How much work is required to move a charge, Q = +8 µC, from the point (0, 4 meters) to the point (3 meters, 0)?",
+            "question": "A point charge, Q = +1 mC, is fixed at the origin. How much work is required to move a charge, Q = +8 \u00b5C, from the point (0, 4 meters) to the point (3 meters, 0)?",
             "options": [
                 "A) 3.5 J",
                 "B) 6.0 J",
                 "C) 22.5 J",
                 "D) 40 J"
             ],
-            "correct_option_index": 1
+            "correct_option_index": 1,
+            "id": 28
         },
         {
             "subject": "Psychology",
             "question": "While swimming in the ocean, Ivan is frightened by a dark shadow in the water even before he has the chance to identify what the shadow is. The synaptic connections taking place during this incident of fright are best described by which of the following?",
             "options": [
                 "A) Messages are sent from the thalamus directly to the amygdala.",
-                "B) Messages are sent from the thalamus to the “what” and “where” pathways.",
+                "B) Messages are sent from the thalamus to the \u201cwhat\u201d and \u201cwhere\u201d pathways.",
                 "C) Messages are sent from the parasympathetic nervous system to the cerebral cortex.",
                 "D) Messages are sent from the frontal lobes to the pituitary gland."
             ],
-            "correct_option_index": 0
+            "correct_option_index": 0,
+            "id": 29
         },
         {
             "subject": "High School Statistics",
@@ -330,29 +359,32 @@
                 "C) 90th percentile.",
                 "D) 95th percentile."
             ],
-            "correct_option_index": 2
+            "correct_option_index": 2,
+            "id": 30
         },
         {
             "subject": "High School US History",
-            "question": "This question refers to the following information. “Society in every state is a blessing, but government even in its best state is but a necessary evil; in its worst state an intolerable one; for when we suffer, or are exposed to the same miseries by a government, which we might expect in a country without government, our calamity is heightened by reflecting that we furnish the means by which we suffer. Government, like dress, is the badge of lost innocence; the palaces of kings are built on the ruins of the bowers of paradise. For were the impulses of conscience clear, uniform, and irresistibly obeyed, man would need no other lawgiver; but that not being the case, he finds it necessary to surrender up a part of his property to furnish means for the protection of the rest; and this he is induced to do by the same prudence which in every other case advises him out of two evils to choose the least. Wherefore, security being the true design and end of government, it unanswerably follows that whatever form thereof appears most likely to ensure it to us, with the least expense and greatest benefit, is preferable to all others.” Thomas Paine, Common Sense, 1776 Which of the following “miseries” alluded to above were most condemned by Anti-Federalists of the post-Revolutionary era?",
+            "question": "This question refers to the following information. \u201cSociety in every state is a blessing, but government even in its best state is but a necessary evil; in its worst state an intolerable one; for when we suffer, or are exposed to the same miseries by a government, which we might expect in a country without government, our calamity is heightened by reflecting that we furnish the means by which we suffer. Government, like dress, is the badge of lost innocence; the palaces of kings are built on the ruins of the bowers of paradise. For were the impulses of conscience clear, uniform, and irresistibly obeyed, man would need no other lawgiver; but that not being the case, he finds it necessary to surrender up a part of his property to furnish means for the protection of the rest; and this he is induced to do by the same prudence which in every other case advises him out of two evils to choose the least. Wherefore, security being the true design and end of government, it unanswerably follows that whatever form thereof appears most likely to ensure it to us, with the least expense and greatest benefit, is preferable to all others.\u201d Thomas Paine, Common Sense, 1776 Which of the following \u201cmiseries\u201d alluded to above were most condemned by Anti-Federalists of the post-Revolutionary era?",
             "options": [
                 "A) Organized response to Bacon's Rebellion.",
                 "B) Federal response to Shays's Rebellion.",
                 "C) Federal response to the Whiskey Rebellion.",
                 "D) Federal response to Pontiac's Rebellion."
             ],
-            "correct_option_index": 2
+            "correct_option_index": 2,
+            "id": 31
         },
         {
             "subject": "High School World History",
-            "question": "This question refers to the following information. “The real grievance of the worker is the insecurity of his existence; he is not sure that he will always have work, he is not sure that he will always be healthy, and he foresees that he will one day be old and unfit to work. If he falls into poverty, even if only through a prolonged illness, he is then completely helpless, left to his own devices, and society does not currently recognize any real obligation towards him beyond the usual help for the poor, even if he has been working all the time ever so faithfully and diligently. The usual help for the poor, however, leaves a lot to be desired, especially in large cities, where it is very much worse than in the country.” Otto von Bismarck, 1884 Otto von Bismarck likely made this speech in reaction to which of the following issues?",
+            "question": "This question refers to the following information. \u201cThe real grievance of the worker is the insecurity of his existence; he is not sure that he will always have work, he is not sure that he will always be healthy, and he foresees that he will one day be old and unfit to work. If he falls into poverty, even if only through a prolonged illness, he is then completely helpless, left to his own devices, and society does not currently recognize any real obligation towards him beyond the usual help for the poor, even if he has been working all the time ever so faithfully and diligently. The usual help for the poor, however, leaves a lot to be desired, especially in large cities, where it is very much worse than in the country.\u201d Otto von Bismarck, 1884 Otto von Bismarck likely made this speech in reaction to which of the following issues?",
             "options": [
                 "A) Social acceptance of child labor.",
                 "B) Declining life expectancy in Germany.",
                 "C) Criticisms of German trade tariffs.",
                 "D) Negative effects attributed to industrial capitalism."
             ],
-            "correct_option_index": 2
+            "correct_option_index": 2,
+            "id": 32
         },
         {
             "subject": "Human Aging",
@@ -363,7 +395,8 @@
                 "C) An older Asian American woman",
                 "D) An older Native American woman"
             ],
-            "correct_option_index": 2
+            "correct_option_index": 2,
+            "id": 33
         },
         {
             "subject": "Human Sexuality",
@@ -374,7 +407,8 @@
                 "C) during the third trimester",
                 "D) all through the pregnancy"
             ],
-            "correct_option_index": 0
+            "correct_option_index": 0,
+            "id": 34
         },
         {
             "subject": "International Law",
@@ -385,7 +419,8 @@
                 "C) This is an unacceptable reservation because the definition of torture in the ICCPR is consistent with customary international law",
                 "D) This is an acceptable reservation because under general international law States have the right to enter reservations to treaties"
             ],
-            "correct_option_index": 1
+            "correct_option_index": 1,
+            "id": 35
         },
         {
             "subject": "Jurisprudence",
@@ -396,7 +431,8 @@
                 "C) The POP would opt for the 'difference principle.'",
                 "D) The POP would reject the 'system of natural liberty.'"
             ],
-            "correct_option_index": 0
+            "correct_option_index": 0,
+            "id": 36
         },
         {
             "subject": "Logical Fallacies",
@@ -407,7 +443,8 @@
                 "C) Gambler's Fallacy",
                 "D) Equivocation"
             ],
-            "correct_option_index": 0
+            "correct_option_index": 0,
+            "id": 37
         },
         {
             "subject": "Machine Learning",
@@ -418,7 +455,8 @@
                 "C) 3/16",
                 "D) 1/5"
             ],
-            "correct_option_index": 1
+            "correct_option_index": 1,
+            "id": 38
         },
         {
             "subject": "Management",
@@ -429,7 +467,8 @@
                 "C) Authoritarian",
                 "D) A mix of laissez-faire and democratic"
             ],
-            "correct_option_index": 2
+            "correct_option_index": 2,
+            "id": 39
         },
         {
             "subject": "Marketing",
@@ -440,7 +479,8 @@
                 "C) New immigrants who really want to assimilate into their new culture.",
                 "D) Children, who base most of their buying decisions on outside influences."
             ],
-            "correct_option_index": 3
+            "correct_option_index": 3,
+            "id": 40
         },
         {
             "subject": "Medical Genetics",
@@ -451,7 +491,8 @@
                 "C) Spina bifida (neural tube defects)",
                 "D) Marfan syndrome"
             ],
-            "correct_option_index": 3
+            "correct_option_index": 3,
+            "id": 41
         },
         {
             "subject": "Miscellaneous",
@@ -462,18 +503,20 @@
                 "C) Corn tortilla and refried beans",
                 "D) Lentil soup and brown bread"
             ],
-            "correct_option_index": 1
+            "correct_option_index": 1,
+            "id": 42
         },
         {
             "subject": "Moral Disputes",
-            "question": "In response to Sandel's “social justice” argument, Kamm argues that",
+            "question": "In response to Sandel's \u201csocial justice\u201d argument, Kamm argues that",
             "options": [
                 "A) even if we were able to enhance ourselves or others, we would not thereby be obligated to do so.",
                 "B) there is a difference between (i) choosing that one have a certain trait and (ii) being responsible for bearing the costs of that choice.",
                 "C) having the option to enhance will lead to fewer instances of people who require the assistance of others.",
                 "D) all of the above"
             ],
-            "correct_option_index": 3
+            "correct_option_index": 3,
+            "id": 43
         },
         {
             "subject": "Moral Scenarios",
@@ -484,7 +527,8 @@
                 "C) Not wrong, Wrong",
                 "D) Not wrong, Not wrong"
             ],
-            "correct_option_index": 2
+            "correct_option_index": 2,
+            "id": 44
         },
         {
             "subject": "Nutrition",
@@ -495,18 +539,20 @@
                 "C) Butyric acid, formed during colonic fibre fermentation stimulates anti-oxidant defences in the colon",
                 "D) None of these options are correct"
             ],
-            "correct_option_index": 2
+            "correct_option_index": 2,
+            "id": 45
         },
         {
             "subject": "Philosophy",
-            "question": "According to Moore's “ideal utilitarianism,” the right action is the one that brings about the greatest amount of:",
+            "question": "According to Moore's \u201cideal utilitarianism,\u201d the right action is the one that brings about the greatest amount of:",
             "options": [
                 "A) pleasure.",
                 "B) happiness.",
                 "C) good.",
                 "D) virtue."
             ],
-            "correct_option_index": 2
+            "correct_option_index": 2,
+            "id": 46
         },
         {
             "subject": "Prehistory",
@@ -517,7 +563,8 @@
                 "C) endless wars between neighboring Mayan city-states.",
                 "D) practices of interbreeding that led to a steep rise in congenital disorders."
             ],
-            "correct_option_index": 1
+            "correct_option_index": 1,
+            "id": 47
         },
         {
             "subject": "Professional Accounting",
@@ -528,7 +575,8 @@
                 "C) $1,650",
                 "D) $16,500"
             ],
-            "correct_option_index": 0
+            "correct_option_index": 0,
+            "id": 48
         },
         {
             "subject": "Professional Law",
@@ -539,7 +587,8 @@
                 "C) Voluntary manslaughter.",
                 "D) Discharge of a firearm in public."
             ],
-            "correct_option_index": 0
+            "correct_option_index": 0,
+            "id": 49
         },
         {
             "subject": "Professional Medicine",
@@ -550,7 +599,8 @@
                 "C) Multiple endocrine neoplasia",
                 "D) Splenic artery aneurysm and embolic disease of the left lower extremity"
             ],
-            "correct_option_index": 1
+            "correct_option_index": 1,
+            "id": 50
         },
         {
             "subject": "Professional Psychology",
@@ -561,7 +611,8 @@
                 "C) loss of privileges for misbehaving",
                 "D) shaping"
             ],
-            "correct_option_index": 0
+            "correct_option_index": 0,
+            "id": 51
         },
         {
             "subject": "Public Relations",
@@ -572,7 +623,8 @@
                 "C) Deliver the speech as prepared and discuss the inaccuracies with your supervisor afterward.",
                 "D) Address the inaccuracies with your supervisor immediately and make the necessary corrections before giving the speech."
             ],
-            "correct_option_index": 3
+            "correct_option_index": 3,
+            "id": 52
         },
         {
             "subject": "Security Studies",
@@ -583,7 +635,8 @@
                 "C) Chemical weapons continue to exert a determining influence on international society. As early as the 1970s military strategists were convinced of the deterrence effects chemical weapons could have, comparable to the second strike survival logic of nuclear deterrence. The preferences of strategists resulted in continued manufacture and stockpiling of weapons creating an international crisis of stability.",
                 "D) While the CWC has been ratified by the majority of international society, some nations with a large chemical capability at their disposal have yet to enter into the treaty. However, to some analysts the destructive military potential would be limited, having a moderate effect on a well-equipped army in conventional warfare. Chemical arsenal essentially falls under the category of the \"poor mans\" weaponry, being simplistic and inexpensive whilst having limited military utility. However, the concern remains of the prospective impact a terrorist chemical attack could have on civilian populations."
             ],
-            "correct_option_index": 3
+            "correct_option_index": 3,
+            "id": 53
         },
         {
             "subject": "Sociology",
@@ -594,7 +647,8 @@
                 "C) If the door is closed, try the window.",
                 "D) Once a thief, always a thief."
             ],
-            "correct_option_index": 0
+            "correct_option_index": 0,
+            "id": 54
         },
         {
             "subject": "US Foreign Policy",
@@ -605,7 +659,8 @@
                 "C) It feared the League would commit the US to an international alliance",
                 "D) Both a and b"
             ],
-            "correct_option_index": 2
+            "correct_option_index": 2,
+            "id": 55
         },
         {
             "subject": "Virology",
@@ -616,7 +671,8 @@
                 "C) (40*70)/(20*60)",
                 "D) (40/70)/(20/60)"
             ],
-            "correct_option_index": 2
+            "correct_option_index": 2,
+            "id": 56
         },
         {
             "subject": "World Religions",
@@ -627,7 +683,8 @@
                 "C) Zhou Dunyi",
                 "D) Wang Yangming"
             ],
-            "correct_option_index": 0
+            "correct_option_index": 0,
+            "id": 57
         }
     ]
 }

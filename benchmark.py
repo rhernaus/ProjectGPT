@@ -13,6 +13,20 @@ from dotenv import load_dotenv
 from datetime import datetime
 
 
+def is_valid_json_file(file_name):
+    # Check if file exists
+    if not os.path.isfile(file_name):
+        return False
+
+    # Check if file contains valid JSON
+    try:
+        with open(file_name, 'r', encoding='utf-8') as file:
+            json.load(file)
+    except json.JSONDecodeError:
+        return False
+
+    return True
+
 def load_tasks():
     with open("tasks.json", "r", encoding="utf-8") as file:
         return json.load(file)["tasks"]
@@ -60,6 +74,13 @@ def main():
     while utils.model not in ["gpt-4", "gpt-3.5-turbo"]:
         utils.model = input("Model (gpt-4, gpt-3.5-turbo): ")
 
+    # Get filename from user
+    file_name = ""
+    while not is_valid_json_file(file_name):
+        file_name = input("Filename (leave blank for default): ")
+        if file_name == "":
+            file_name = "tasks.json"
+
     def process_task(task):
         question = format_question(task)
         correct_answer = task["options"][task["correct_option_index"]]
@@ -97,7 +118,7 @@ def main():
     correct_answers = total_answers = 0
     results = []
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
         future_to_task = {executor.submit(process_task, task): task for task in tasks}
         for future in concurrent.futures.as_completed(future_to_task):
             task = future_to_task[future]
